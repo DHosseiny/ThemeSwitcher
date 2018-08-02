@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Databinding</string>
+    <string name="about">هدف از تشکیل این گروه آشنایی Android Developer  ها با هم و گپ و گفت در این زمینه هست، لطفا هر کسی که Android Developer هست رو در این گروه اضافه کنید.</string>
+    <string name="on">on</string>
+    <string name="off">off</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="action_example">Example action</string>
+</resources>
