@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="ir.parsdroid.themeapp.Theme" />
+
+        <variable
+            name="theme"
+            type="Theme" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/image_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            app:colorFilter="@{Theme.getColor(theme.iconTint)}"
+            tools:srcCompat="@drawable/ic_menu_camera" />
+
+        <TextView
+            android:id="@+id/text_nav"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@{Theme.getColor(theme.textColorSecondary)}"
+            tools:text="Import" />
+
+    </LinearLayout>
+</layout>

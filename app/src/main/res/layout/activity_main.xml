@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+<layout>
 
-    <!-- As the main content view, the view below consumes the entire
-         space available using match_parent in both dimensions. -->
-    <FrameLayout
-        android:id="@+id/container"
+    <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <!-- The drawer is given a fixed width in dp and extends the full height of
-         the container. -->
-    <fragment
-        android:id="@+id/navigation_drawer"
-        android:name="ir.parsdroid.themeapp.NavigationDrawerFragment"
-        android:layout_width="@dimen/navigation_drawer_width"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        tools:layout="@layout/drawer_main" />
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
 
-</android.support.v4.widget.DrawerLayout>
+        <include
+            android:id="@+id/app_bar_main"
+            layout="@layout/app_bar_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/nav_header_main">
+
+            <ListView
+                android:id="@+id/list_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/nav_header_height"
+                tools:listitem="@layout/item_navigation" />
+
+        </android.support.design.widget.NavigationView>
+
+    </android.support.v4.widget.DrawerLayout>
+</layout>

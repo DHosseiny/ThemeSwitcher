@@ -66,9 +66,9 @@ public class Theme extends BaseObservable {
     @Bindable
     public final String selected_red = "selected_red";
     @Bindable
-    public final String mainTextColor = "mainTextColor";
+    public final String textColorPrimary = "primaryTextColor";
     @Bindable
-    public final String mainTextInverseColor = "mainTextInverseColor";
+    public final String textColorSecondary = "textColorSecondary";
     @Bindable
     public final String iconInverseTint = "iconInverseTint";
     @Bindable
@@ -112,7 +112,7 @@ public class Theme extends BaseObservable {
     @Bindable
     public final String conversationFabBG = "conversationFabBG";
     @Bindable
-    public final String conversationFabColor = "conversationFabColor";
+    public final String fabIconColor = "conversationFabColor";
     @Bindable
     public final String fabBackground = "fabBackground";
     @Bindable
@@ -122,40 +122,42 @@ public class Theme extends BaseObservable {
     public final String chatInputIconTint = "chatInputIconTint";
 
     static {
+        defaultThemeValues.put(getInstance().colorPrimary, 0xFF3f51b5);
+
+        defaultThemeValues.put(getInstance().colorPrimaryLight, 0xFF757de8);
+
+        defaultThemeValues.put(getInstance().colorPrimaryDark, 0xFF002984);
+
+        defaultThemeValues.put(getInstance().colorAccent, 0xFFb2ff59);
+
+        defaultThemeValues.put(getInstance().textColorPrimary, Color.WHITE);
+
+        defaultThemeValues.put(getInstance().textColorSecondary, Color.BLACK);
+
+        defaultThemeValues.put(getInstance().windowBackground, Color.WHITE);
+
+        defaultThemeValues.put(getInstance().iconTint, Color.WHITE);
+
+        defaultThemeValues.put(getInstance().iconInverseTint, Color.BLACK);
+
+        defaultThemeValues.put(getInstance().fabIconColor, 0xFFFFFFFF);
+
         defaultThemeValues.put(getInstance().fabBackground, 0xFFFFFFFF);
 
         defaultThemeValues.put(getInstance().fabItemColors, 0xFF737373);
-
-        defaultThemeValues.put(getInstance().colorPrimary, 0xFFD50000);
-
-        defaultThemeValues.put(getInstance().colorPrimaryLight, 0xFFFF5131);
-
-        defaultThemeValues.put(getInstance().colorPrimaryDark, 0xFFb71c1c);
 
         defaultThemeValues.put(getInstance().settingsItemBackgroundColor, Color.WHITE);
 
         defaultThemeValues.put(getInstance().pinnedConversation, 0xFFF5F5F5);
 
-
-        defaultThemeValues.put(getInstance().colorAccent, 0xFFE53935);
-
-        defaultThemeValues.put(getInstance().windowBackground, Color.WHITE);
-
         defaultThemeValues.put(getInstance().chatTextColor, 0xdd000000);
 
         defaultThemeValues.put(getInstance().fileNameTextColor, 0xdd000000);
 
-        defaultThemeValues.put(getInstance().mainTextColor, Color.BLACK);
-
-        defaultThemeValues.put(getInstance().mainTextInverseColor, Color.WHITE);
-
         defaultThemeValues.put(getInstance().subtitleInverseColor, 0xd9ffffff);
 
-        defaultThemeValues.put(getInstance().iconTint, Color.TRANSPARENT);
-
-        defaultThemeValues.put(getInstance().iconInverseTint, Color.TRANSPARENT);
-
         defaultThemeValues.put(getInstance().messageBackgroundTintIn, 0xffffffff);
+
         defaultThemeValues.put(getInstance().readLineBg, Color.WHITE);
 
         defaultThemeValues.put(getInstance().messageBackgroundTintOut, 0xFFEFFFDE);
@@ -186,8 +188,6 @@ public class Theme extends BaseObservable {
 
         defaultThemeValues.put(getInstance().conversationFabBG, 0xFFE53935);
 
-        defaultThemeValues.put(getInstance().conversationFabColor, 0xFFFFFFFF);
-
         defaultThemeValues.put(getInstance().chatInputIconTint, Color.TRANSPARENT);
 
         themes = new ArrayList<>();
@@ -205,7 +205,6 @@ public class Theme extends BaseObservable {
         themeInfo = new ThemeInfo(DAY, true);
         themes.add(themeInfo);
         themesDict.put(DAY, themeInfo);
-
     }
 
     public static Theme getInstance() {

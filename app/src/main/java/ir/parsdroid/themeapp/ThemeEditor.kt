@@ -1,6 +1,7 @@
 package ir.parsdroid.themeapp
 
 import android.app.Activity
+import android.app.ActivityManager
 import android.graphics.Color
 import android.os.Build
 import ir.parsdroid.themeapp.Utilities.getAssetsDir
@@ -8,6 +9,7 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.InputStream
 import java.util.*
+
 
 /**
  * Zigzag Project
@@ -157,9 +159,24 @@ class ThemeEditor {
                 val themeInfo = ThemeInfo(themeName!!, isAsset)
 
                 Theme.loadTheme(themeInfo, getThemeFileValues(themeInfo))
-                changeStatusBarColor(activity)
 //                val overrideChatBackground = Preferences.getSharedPreferences().getBoolean(Preferences.OVERRIDE_BACKGROUND, false)
 //                loadWallpaper(activity)
+            }
+
+            //must be after Theme.loadTheme() to load proper color
+            changeStatusBarColor(activity)
+            setTaskDescription(activity)
+
+        }
+
+        private fun setTaskDescription(activity: Activity) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                try {
+                    activity.setTaskDescription(ActivityManager.TaskDescription(null, null, Theme.getColor(Theme.getInstance().colorPrimary) or -0x1000000))
+                } catch (e: Exception) {
+                    //
+                }
+
             }
         }
 

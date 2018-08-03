@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Databinding</string>
+    <string name="app_name">ThemeApp</string>
     <string name="about">هدف از تشکیل این گروه آشنایی Android Developer  ها با هم و گپ و گفت در این زمینه هست، لطفا هر کسی که Android Developer هست رو در این گروه اضافه کنید.</string>
     <string name="on">on</string>
     <string name="off">off</string>
