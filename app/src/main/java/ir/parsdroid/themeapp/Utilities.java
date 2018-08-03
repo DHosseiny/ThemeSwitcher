@@ -1,5 +1,7 @@
 package ir.parsdroid.themeapp;
 
+import android.databinding.BindingConversion;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,7 +15,7 @@ import java.util.regex.Pattern;
  */
 public class Utilities {
 
-    public static Pattern pattern = Pattern.compile("[\\-0-9]+");
+    private static Pattern pattern = Pattern.compile("[\\-0-9]+");
 
     public static Integer parseInt(String value) {
         if (value == null) {
@@ -49,4 +51,9 @@ public class Utilities {
         return true;
     }
 
+    @BindingConversion
+    public static int stringToColorInt(String colorKey) {
+
+        return Theme.getColor(colorKey);
+    }
 }

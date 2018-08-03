@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">ThemeApp</string>
-    <string name="about">هدف از تشکیل این گروه آشنایی Android Developer  ها با هم و گپ و گفت در این زمینه هست، لطفا هر کسی که Android Developer هست رو در این گروه اضافه کنید.</string>
-    <string name="on">on</string>
-    <string name="off">off</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>

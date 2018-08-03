@@ -7,7 +7,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 
-import org.greenrobot.eventbus.EventBus;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class Theme extends BaseObservable {
     @NotNull
     public static final String NIGHT = "night";
 
-    private static ThemeInfo currentTheme;
+    static ThemeInfo currentTheme;
 
 //    public static final String background = "chatBackground";
 //
@@ -272,6 +271,10 @@ public class Theme extends BaseObservable {
         return defaultTheme.equals(currentTheme);
     }
 
+    public static boolean isCurrentTheme(ThemeInfo theme) {
+        return currentTheme.equals(theme);
+    }
+
     public static void setDrawableColorByKey(Drawable drawable, String key) {
         drawable.setColorFilter(new PorterDuffColorFilter(getColor(key), PorterDuff.Mode.MULTIPLY));
     }
@@ -282,7 +285,6 @@ public class Theme extends BaseObservable {
 
 //        loadWallpaper(ApplicationLoader.applicationContext);
         notifyChange();
-        EventBus.getDefault().post(THEME_CHANGED);
     }
 
     public static void loadTheme(@NotNull ThemeInfo theme, HashMap<String, Integer> themeFileValues) {
@@ -296,6 +298,5 @@ public class Theme extends BaseObservable {
         currentThemeValues = new HashMap<>();
 //        loadWallpaper(ApplicationLoader.applicationContext);
         notifyChange();
-        EventBus.getDefault().post(THEME_CHANGED);
     }
 }

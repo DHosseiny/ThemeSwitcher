@@ -5,6 +5,8 @@ import android.app.ActivityManager
 import android.graphics.Color
 import android.os.Build
 import ir.parsdroid.themeapp.Utilities.getAssetsDir
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.File
 import java.io.FileInputStream
 import java.io.InputStream
@@ -16,7 +18,7 @@ import java.util.*
  * Created by Seyyed Davud Hosseiny on 5/15/2018.
  */
 
-class ThemeEditor {
+class ThemeAgent {
 
 
     companion object {
@@ -188,6 +190,29 @@ class ThemeEditor {
                 window.statusBarColor = Theme.getColor(Theme.getInstance().colorPrimaryDark)
             }
         }
+
+        fun getThemes(): Pair<MutableList<ThemeInfo>, Int> {
+
+            val themeInfos = Preferences.getSharedPreferences().getString(Preferences.THEMES, "[]")
+
+            val jsonArray = JSONArray(themeInfos)
+
+            val themes = mutableListOf<ThemeInfo>()
+
+            themes.addAll(Theme.themes)
+
+            for (i in 0 until jsonArray.length()) {
+
+                val jsonObject = jsonArray.getJSONObject(i)
+                val themeInfo = ThemeInfo.fromJson(jsonObject)
+
+                themes.add(themeInfo)
+            }
+
+            val selectedThemeIndex = themes.indexOfFirst { it == Theme.currentTheme }
+
+            return themes to selectedThemeIndex
+        }
     }
 
 
@@ -196,6 +221,19 @@ class ThemeEditor {
 
 class ThemeInfo constructor(val name: String,
                             val isAsset: Boolean) {
+
+
+    companion object {
+
+        @JvmStatic
+        fun fromJson(jsonObject: JSONObject): ThemeInfo {
+
+            return ThemeInfo(
+                    jsonObject.getString("name"),
+                    jsonObject.getBoolean("isAsset"))
+        }
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

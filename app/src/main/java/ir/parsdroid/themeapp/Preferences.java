@@ -10,6 +10,7 @@ public class Preferences {
     public static final String OVERRIDE_BACKGROUND = "override_background";
     public static final String THEME = "theme";
     public static final String IS_ASSET = "isAsset";
+    public static final String THEMES = "themes";
 
     private static SharedPreferences sharedPreferences;
 
