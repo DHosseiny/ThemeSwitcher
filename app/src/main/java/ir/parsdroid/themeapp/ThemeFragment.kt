@@ -1,19 +1,18 @@
-package ir.parsdroid.themeapp.theme
+package ir.parsdroid.themeapp
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.parsdroid.themeapp.ThemeAgent
 import ir.parsdroid.themeapp.databinding.FragmentThemeBinding
+import ir.parsdroid.themeapp.theme.ThemeAgent
 
 /**
  * Created by Davud. ThemeApp project.
  */
-class ThemeFragment : BaseFragment() {
+class ThemeFragment : BaseFragment<FragmentThemeBinding>() {
 
     private lateinit var adapter: ThemeAdapter
-    private lateinit var binding: FragmentThemeBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +22,8 @@ class ThemeFragment : BaseFragment() {
 
         adapter = ThemeAdapter(themes, selectedThemePosition, BaseAdapter.OnItemClickListener {
             interactionListener.onThemeSelected(it)
+            adapter.setSelectedThemePosition(themes.indexOf(it))
+            adapter.notifyDataSetChanged()
         })
 
     }

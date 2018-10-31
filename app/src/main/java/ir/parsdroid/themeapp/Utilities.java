@@ -10,6 +10,8 @@ import java.io.OutputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import ir.parsdroid.themeapp.theme.Theme;
+
 /**
  * Created by Davud. ThemeApp project.
  */

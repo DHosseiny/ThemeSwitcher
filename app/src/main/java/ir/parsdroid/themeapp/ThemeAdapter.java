@@ -1,12 +1,11 @@
-package ir.parsdroid.themeapp.theme;
+package ir.parsdroid.themeapp;
 
 import android.support.annotation.NonNull;
 
 import java.util.List;
 
-import ir.parsdroid.themeapp.R;
-import ir.parsdroid.themeapp.ThemeInfo;
 import ir.parsdroid.themeapp.databinding.ItemThemeBinding;
+import ir.parsdroid.themeapp.theme.ThemeInfo;
 
 /**
  * Created by Davud. ThemeApp project.
@@ -26,19 +25,21 @@ class ThemeAdapter extends BaseAdapter<ItemThemeBinding> {
         this.clickListener = clickListener;
     }
 
+    public void setSelectedThemePosition(int selectedThemePosition) {
+        this.selectedThemePosition = selectedThemePosition;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder<ItemThemeBinding> holder, int position) {
 
         ThemeInfo themeInfo = themes.get(position);
 
+//        holder.binding.
         holder.binding.textTheme.setText(themeInfo.getName());
         holder.binding.radioTheme.setChecked(selectedThemePosition == position);
 
         holder.bind();
-        holder.itemView.setOnClickListener(view -> {
-
-            clickListener.onItemClick(themeInfo);
-        });
+        holder.itemView.setOnClickListener(view -> clickListener.onItemClick(themeInfo));
     }
 
 

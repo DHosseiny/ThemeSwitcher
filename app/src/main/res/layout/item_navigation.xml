@@ -3,7 +3,7 @@
 
     <data>
 
-        <import type="ir.parsdroid.themeapp.Theme" />
+        <import type="ir.parsdroid.themeapp.theme.Theme" />
 
         <variable
             name="theme"

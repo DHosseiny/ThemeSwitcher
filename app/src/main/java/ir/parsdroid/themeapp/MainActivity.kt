@@ -9,8 +9,9 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import ir.parsdroid.themeapp.databinding.ActivityMainBinding
-import ir.parsdroid.themeapp.theme.InteractionListener
-import ir.parsdroid.themeapp.theme.ThemeFragment
+import ir.parsdroid.themeapp.theme.Theme
+import ir.parsdroid.themeapp.theme.ThemeAgent
+import ir.parsdroid.themeapp.theme.ThemeInfo
 
 
 class MainActivity : AppCompatActivity(), InteractionListener {
@@ -18,19 +19,18 @@ class MainActivity : AppCompatActivity(), InteractionListener {
     private lateinit var binding: ActivityMainBinding
 
 
-/*    private val onThemeChangedCallback = object : Observable.OnPropertyChangedCallback() {
-        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-
-            if (propertyId == BR._all) {
-                ThemeAgent.changeStatusBarColor(this@MainActivity)
-            }
-        }
-    }*/
+//    private val onThemeChangedCallback = object : Observable.OnPropertyChangedCallback() {
+//        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+//
+//            if (propertyId == BR.theme) {
+//            }
+//        }
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ThemeAgent.checkTheme(this)
+        ThemeAgent.onStart(this)
 //        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -89,6 +89,12 @@ class MainActivity : AppCompatActivity(), InteractionListener {
 
 
     override fun onThemeSelected(theme: ThemeInfo) {
-        //TODO
+
+        ThemeAgent.applyTheme(theme, this)
     }
+}
+
+interface InteractionListener {
+
+    fun onThemeSelected(theme: ThemeInfo)
 }

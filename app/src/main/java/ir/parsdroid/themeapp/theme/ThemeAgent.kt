@@ -1,9 +1,12 @@
-package ir.parsdroid.themeapp
+package ir.parsdroid.themeapp.theme
 
 import android.app.Activity
 import android.app.ActivityManager
 import android.graphics.Color
 import android.os.Build
+import ir.parsdroid.themeapp.ApplicationLoader
+import ir.parsdroid.themeapp.Preferences
+import ir.parsdroid.themeapp.Utilities
 import ir.parsdroid.themeapp.Utilities.getAssetsDir
 import org.json.JSONArray
 import org.json.JSONObject
@@ -24,7 +27,7 @@ class ThemeAgent {
     companion object {
 
         @JvmStatic
-        fun applyTheme(theme: ThemeInfo) {
+        fun applyTheme(theme: ThemeInfo, activity: Activity) {
 
             val editor = Preferences.getSharedPreferences().edit()
             editor.putString(Preferences.THEME, theme.name)
@@ -33,16 +36,19 @@ class ThemeAgent {
 
             if (theme.name == Theme.DEFAULT) {
                 Theme.getInstance().resetTheme()
-            } else Theme.getInstance().setTheme(theme, getThemeFileValues(theme))
+            } else Theme.getInstance().setTheme(theme, readThemeFileValues(theme), true)
+
+            changeStatusBarColor(activity)
+            setTaskDescription(activity)
         }
 
         @JvmStatic
-        private fun getThemeFileValues(themeInfo: ThemeInfo): HashMap<String, Int> {
+        private fun readThemeFileValues(themeInfo: ThemeInfo): HashMap<String, Int> {
 
             val mFile = if (themeInfo.isAsset) {
                 getAssetFile(themeInfo.name + ".attheme")
             } else {
-//                getInternalDir()
+//                getInternalDir()//TODO
                 null
             }
 
@@ -150,7 +156,7 @@ class ThemeAgent {
         }
 
         @JvmStatic
-        fun checkTheme(activity: Activity) {
+        fun onStart(activity: Activity) {
 
             val themeName = Preferences.getSharedPreferences().getString(Preferences.THEME, Theme.DEFAULT)
 
@@ -160,12 +166,13 @@ class ThemeAgent {
 
                 val themeInfo = ThemeInfo(themeName!!, isAsset)
 
-                Theme.loadTheme(themeInfo, getThemeFileValues(themeInfo))
+                Theme.getInstance().setTheme(themeInfo, readThemeFileValues(themeInfo), false)//don't need to notify on start
+
 //                val overrideChatBackground = Preferences.getSharedPreferences().getBoolean(Preferences.OVERRIDE_BACKGROUND, false)
 //                loadWallpaper(activity)
             }
 
-            //must be after Theme.loadTheme() to load proper color
+            //must be after Theme.setTheme() to load proper colors
             changeStatusBarColor(activity)
             setTaskDescription(activity)
 

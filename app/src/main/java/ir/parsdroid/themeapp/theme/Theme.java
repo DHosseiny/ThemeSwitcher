@@ -1,4 +1,4 @@
-package ir.parsdroid.themeapp;
+package ir.parsdroid.themeapp.theme;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
@@ -12,9 +12,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Theme extends BaseObservable {
+import ir.parsdroid.themeapp.BR;
 
-    private static final int THEME_CHANGED = 100;
+public class Theme extends BaseObservable {
 
     @NotNull
     public static final String DEFAULT = "default";
@@ -49,76 +49,30 @@ public class Theme extends BaseObservable {
     @Bindable
     public final String colorAccent = "colorAccent";
     @Bindable
-    public final String windowBackground = "windowBackground";
-    @Bindable
-    public final String hyperTextOut = "hyperTextOut";
-    @Bindable
-    public final String background_grey = "background_grey";
-    @Bindable
-    public final String grey_highlight_text = "grey_highlight_text";
-    @Bindable
-    public final String blue_replier_name = "blue_replier_name";
-    @Bindable
-    public final String accentBlue = "accentBlue";
-    @Bindable
-    public final String pinnedConversation = "pinnedConversation";
-    @Bindable
-    public final String selected_red = "selected_red";
-    @Bindable
-    public final String textColorPrimary = "primaryTextColor";
+    public final String textColorPrimary = "textColorPrimary";
     @Bindable
     public final String textColorSecondary = "textColorSecondary";
     @Bindable
-    public final String iconInverseTint = "iconInverseTint";
+    public final String textColorTertiary = "textColorTertiary";
     @Bindable
-    public final String messageBackgroundTintIn = "messageBackgroundTintIn";
-    @Bindable
-    public final String messageBackgroundTintOut = "messageBackgroundTintOut";
-    @Bindable
-    public final String messagePropertiesOut = "messagePropertiesOut";
-    @Bindable
-    public final String dividerColor = "dividerColor";
-    @Bindable
-    public final String conversationSearchSeparator = "conversationSearchSeparator";
-    @Bindable
-    public final String subtitleInverseColor = "subtitleInverseColor";
-    @Bindable
-    public final String conversationIconTint = "conversationIconTint";
+    public final String textColorInverse = "textColorInverse";
     @Bindable
     public final String iconTint = "iconTint";
     @Bindable
-    public final String chatTextColor = "chatTextColor";
+    public final String iconInverseTint = "iconInverseTint";
     @Bindable
-    public final String messagePropertiesIn = "messagePropertiesIn";
+    public final String divider = "divider";
     @Bindable
-    public final String settingsItemBackgroundColor = "settingsItemBackgroundColor";
+    public final String hintText = "hintText";
     @Bindable
-    public final String hintTextColor = "hintTextColor";
-    @Bindable
-    public final String fileNameTextColor = "fileNameTextColor";
-    @Bindable
-    public final String messageStatusTint = "messageStatusTint";
-    @Bindable
-    public final String enterViewBg = "enterViewBg";
-    @Bindable
-    public final String fileSizeTextColorIn = "fileSizeTextColorIn";
-    @Bindable
-    public final String fileSizeTextColorOut = "fileSizeTextColorOut";
-    @Bindable
-    public final String readLineBg = "readLineBg";
-    @Bindable
-    public final String dialogButtonColor = "dialogButtonColor";
-    @Bindable
-    public final String conversationFabBG = "conversationFabBG";
-    @Bindable
-    public final String fabIconColor = "conversationFabColor";
+    public final String fabIcon = "fabIcon";
     @Bindable
     public final String fabBackground = "fabBackground";
     @Bindable
-    public final String fabItemColors = "fabItemColors";
+    public final String hyperText = "hyperText";
 
-    @Bindable
-    public final String chatInputIconTint = "chatInputIconTint";
+    //colors that don't need to observe to them
+    public static final String windowBackground = "windowBackground";
 
     static {
         defaultThemeValues.put(getInstance().colorPrimary, 0xFF3f51b5);
@@ -129,65 +83,30 @@ public class Theme extends BaseObservable {
 
         defaultThemeValues.put(getInstance().colorAccent, 0xFFb2ff59);
 
-        defaultThemeValues.put(getInstance().textColorPrimary, Color.WHITE);
+        defaultThemeValues.put(getInstance().textColorInverse, Color.WHITE);
+
+        defaultThemeValues.put(getInstance().textColorPrimary, Color.BLACK);
 
         defaultThemeValues.put(getInstance().textColorSecondary, Color.BLACK);
 
-        defaultThemeValues.put(getInstance().windowBackground, Color.WHITE);
+        defaultThemeValues.put(getInstance().textColorTertiary, Color.DKGRAY);
+
+        defaultThemeValues.put(windowBackground, Color.WHITE);
 
         defaultThemeValues.put(getInstance().iconTint, Color.WHITE);
 
         defaultThemeValues.put(getInstance().iconInverseTint, Color.BLACK);
 
-        defaultThemeValues.put(getInstance().fabIconColor, 0xFFFFFFFF);
+        defaultThemeValues.put(getInstance().fabIcon, Color.WHITE);
 
-        defaultThemeValues.put(getInstance().fabBackground, 0xFFFFFFFF);
+        defaultThemeValues.put(getInstance().fabBackground, Color.WHITE);
 
-        defaultThemeValues.put(getInstance().fabItemColors, 0xFF737373);
+        defaultThemeValues.put(getInstance().divider, Color.LTGRAY);
 
-        defaultThemeValues.put(getInstance().settingsItemBackgroundColor, Color.WHITE);
+        defaultThemeValues.put(getInstance().hintText, Color.LTGRAY);
 
-        defaultThemeValues.put(getInstance().pinnedConversation, 0xFFF5F5F5);
+        defaultThemeValues.put(getInstance().hyperText, Color.BLUE);
 
-        defaultThemeValues.put(getInstance().chatTextColor, 0xdd000000);
-
-        defaultThemeValues.put(getInstance().fileNameTextColor, 0xdd000000);
-
-        defaultThemeValues.put(getInstance().subtitleInverseColor, 0xd9ffffff);
-
-        defaultThemeValues.put(getInstance().messageBackgroundTintIn, 0xffffffff);
-
-        defaultThemeValues.put(getInstance().readLineBg, Color.WHITE);
-
-        defaultThemeValues.put(getInstance().messageBackgroundTintOut, 0xFFEFFFDE);
-
-        defaultThemeValues.put(getInstance().messagePropertiesOut, 0xFF5DC452);
-
-        defaultThemeValues.put(getInstance().messagePropertiesIn, 0xFF999999);
-
-        defaultThemeValues.put(getInstance().hyperTextOut, 0xFF2678B6);
-
-        defaultThemeValues.put(getInstance().hintTextColor, Color.GRAY);
-
-        defaultThemeValues.put(getInstance().conversationIconTint, Color.TRANSPARENT);
-
-        defaultThemeValues.put(getInstance().messageStatusTint, 0xFF46aa36);
-
-        defaultThemeValues.put(getInstance().enterViewBg, Color.WHITE);
-
-        defaultThemeValues.put(getInstance().fileSizeTextColorIn, 0xFFA1AAB3);
-
-        defaultThemeValues.put(getInstance().fileSizeTextColorOut, 0xFF65B05B);
-
-        defaultThemeValues.put(getInstance().dialogButtonColor, 0xFFE53935);//accent color
-
-        defaultThemeValues.put(getInstance().dividerColor, 0xFFE9E9E9);
-
-        defaultThemeValues.put(getInstance().conversationSearchSeparator, 0xFFF0F0F0);
-
-        defaultThemeValues.put(getInstance().conversationFabBG, 0xFFE53935);
-
-        defaultThemeValues.put(getInstance().chatInputIconTint, Color.TRANSPARENT);
 
         themes = new ArrayList<>();
         themesDict = new HashMap<>();
@@ -279,24 +198,18 @@ public class Theme extends BaseObservable {
         drawable.setColorFilter(new PorterDuffColorFilter(getColor(key), PorterDuff.Mode.MULTIPLY));
     }
 
-    public void setTheme(@NotNull ThemeInfo theme, HashMap<String, Integer> themeFileValues) {
+    public void setTheme(@NotNull ThemeInfo theme, HashMap<String, Integer> themeValues, boolean notify) {
         currentTheme = theme;
-        currentThemeValues = themeFileValues;
-
+        currentThemeValues = themeValues;
 //        loadWallpaper(ApplicationLoader.applicationContext);
-        notifyChange();
+        if (notify) notifyPropertyChanged(BR.theme);
     }
 
-    public static void loadTheme(@NotNull ThemeInfo theme, HashMap<String, Integer> themeFileValues) {
-        currentTheme = theme;
-        currentThemeValues = themeFileValues;
-//        loadWallpaper(ApplicationLoader.applicationContext);
-    }
 
     public void resetTheme() {
         currentTheme = defaultTheme;
         currentThemeValues = new HashMap<>();
 //        loadWallpaper(ApplicationLoader.applicationContext);
-        notifyChange();
+        notifyPropertyChanged(BR.theme);
     }
 }

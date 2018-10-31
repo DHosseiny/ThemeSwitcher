@@ -1,4 +1,4 @@
-package ir.parsdroid.themeapp.theme;
+package ir.parsdroid.themeapp;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.android.databinding.library.baseAdapters.BR;
 
-import ir.parsdroid.themeapp.Theme;
+import ir.parsdroid.themeapp.theme.Theme;
 
 /**
  * Zigzag Project
@@ -18,9 +18,6 @@ import ir.parsdroid.themeapp.Theme;
 
 public abstract class BaseAdapter<B extends ViewDataBinding>
         extends RecyclerView.Adapter<BaseAdapter.ViewHolder<B>> {
-
-    public BaseAdapter() {
-    }
 
     @NonNull
     public ViewHolder<B> onCreateViewHolder(@NonNull ViewGroup parent,
@@ -50,7 +47,7 @@ public abstract class BaseAdapter<B extends ViewDataBinding>
     public static class ViewHolder<B extends ViewDataBinding> extends RecyclerView.ViewHolder {
         public final B binding;
 
-        public ViewHolder(B binding) {
+        ViewHolder(B binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

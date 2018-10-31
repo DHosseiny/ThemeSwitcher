@@ -5,7 +5,7 @@
 
         <variable
             name="theme"
-            type="ir.parsdroid.themeapp.Theme" />
+            type="ir.parsdroid.themeapp.theme.Theme" />
 
     </data>
 

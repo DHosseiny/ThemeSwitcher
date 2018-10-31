@@ -6,11 +6,11 @@
 
         <import type="android.content.res.ColorStateList" />
 
-        <import type="ir.parsdroid.themeapp.Theme" />
+        <import type="ir.parsdroid.themeapp.theme.Theme" />
 
         <variable
             name="theme"
-            type="ir.parsdroid.themeapp.Theme" />
+            type="ir.parsdroid.themeapp.theme.Theme" />
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
             app:backgroundTintList="@{ColorStateList.valueOf(Theme.getColor(theme.colorAccent))}"
-            app:colorFilter="@{Theme.getColor(theme.iconInverseTint)}"
+            app:colorFilter="@{theme.iconInverseTint}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add_theme"
