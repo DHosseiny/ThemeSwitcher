@@ -182,8 +182,8 @@ class ThemeAgent {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 try {
                     activity.setTaskDescription(ActivityManager.TaskDescription(null, null, Theme.getColor(Theme.getInstance().colorPrimary) or -0x1000000))
-                } catch (e: Exception) {
-                    //
+                } catch (ignored: Exception) {
+
                 }
 
             }

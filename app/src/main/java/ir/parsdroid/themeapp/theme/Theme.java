@@ -202,7 +202,8 @@ public class Theme extends BaseObservable {
         currentTheme = theme;
         currentThemeValues = themeValues;
 //        loadWallpaper(ApplicationLoader.applicationContext);
-        if (notify) notifyPropertyChanged(BR.theme);
+        if (notify)
+            notifyPropertyChanged(BR._all);// TODO: 12/18/2018 notify any of colors instead of all.
     }
 
 
@@ -210,6 +211,6 @@ public class Theme extends BaseObservable {
         currentTheme = defaultTheme;
         currentThemeValues = new HashMap<>();
 //        loadWallpaper(ApplicationLoader.applicationContext);
-        notifyPropertyChanged(BR.theme);
+        notifyPropertyChanged(BR._all);// TODO: 12/18/2018 notify any of colors instead of all.
     }
 }

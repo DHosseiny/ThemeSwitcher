@@ -34,7 +34,7 @@ class ThemeAdapter extends BaseAdapter<ItemThemeBinding> {
 
         ThemeInfo themeInfo = themes.get(position);
 
-//        holder.binding.
+
         holder.binding.textTheme.setText(themeInfo.getName());
         holder.binding.radioTheme.setChecked(selectedThemePosition == position);
 
