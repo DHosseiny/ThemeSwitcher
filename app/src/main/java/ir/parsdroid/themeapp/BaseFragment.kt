@@ -1,12 +1,12 @@
 package ir.parsdroid.themeapp
 
 import android.content.Context
-import android.databinding.Observable
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.CallSuper
-import android.support.v4.app.Fragment
 import android.view.View
+import androidx.annotation.CallSuper
+import androidx.databinding.Observable
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import ir.parsdroid.themeapp.theme.Theme
 
 open class BaseFragment<B : ViewDataBinding> : Fragment() {
@@ -24,7 +24,7 @@ open class BaseFragment<B : ViewDataBinding> : Fragment() {
         }
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
 
         interactionListener = context as InteractionListener

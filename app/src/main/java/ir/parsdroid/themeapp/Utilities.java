@@ -1,7 +1,7 @@
 package ir.parsdroid.themeapp;
 
-import android.databinding.BindingConversion;
-
+import androidx.databinding.BindingConversion;
+import ir.parsdroid.themeapp.theme.Theme;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,8 +9,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import ir.parsdroid.themeapp.theme.Theme;
 
 /**
  * Created by Davud. ThemeApp project.

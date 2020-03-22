@@ -1,18 +1,15 @@
 package ir.parsdroid.themeapp.theme;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
-
-import org.jetbrains.annotations.NotNull;
-
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import ir.parsdroid.themeapp.BR;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import ir.parsdroid.themeapp.BR;
+import org.jetbrains.annotations.NotNull;
 
 public class Theme extends BaseObservable {
 

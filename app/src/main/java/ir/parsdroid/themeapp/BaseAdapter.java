@@ -1,14 +1,11 @@
 package ir.parsdroid.themeapp;
 
-import android.databinding.DataBindingUtil;
-import android.databinding.ViewDataBinding;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-
-import com.android.databinding.library.baseAdapters.BR;
-
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
+import androidx.recyclerview.widget.RecyclerView;
 import ir.parsdroid.themeapp.theme.Theme;
 
 /**

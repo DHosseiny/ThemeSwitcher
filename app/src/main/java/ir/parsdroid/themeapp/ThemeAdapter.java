@@ -1,11 +1,9 @@
 package ir.parsdroid.themeapp;
 
-import android.support.annotation.NonNull;
-
-import java.util.List;
-
+import androidx.annotation.NonNull;
 import ir.parsdroid.themeapp.databinding.ItemThemeBinding;
 import ir.parsdroid.themeapp.theme.ThemeInfo;
+import java.util.List;
 
 /**
  * Created by Davud. ThemeApp project.
