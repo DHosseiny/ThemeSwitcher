@@ -20,6 +20,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("ir.parsdroidgroup.themeapp", appContext.getPackageName());
+        assertEquals("ir.parsdroid.themeapp", appContext.getPackageName());
     }
 }
