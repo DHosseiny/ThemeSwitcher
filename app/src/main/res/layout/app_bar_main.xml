@@ -23,6 +23,7 @@
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <androidx.appcompat.widget.Toolbar
@@ -50,9 +51,7 @@
             app:colorFilter="@{theme.iconInverseTint}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_add_theme"
-            tools:layout_editor_absoluteX="344dp"
-            tools:layout_editor_absoluteY="527dp" />
+            app:srcCompat="@drawable/ic_add_theme" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
