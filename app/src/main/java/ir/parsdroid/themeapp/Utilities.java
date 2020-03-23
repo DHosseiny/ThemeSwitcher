@@ -59,4 +59,10 @@ public class Utilities {
 
         return Theme.getColor(colorKey);
     }
+
+    @BindingConversion
+    public static ColorStateList stringToColorStateList(String colorKey) {
+
+        return ColorStateList.valueOf(Theme.getColor(colorKey));
+    }
 }
