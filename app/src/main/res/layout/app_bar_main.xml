@@ -31,7 +31,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:background="@{Theme.getColor(theme.colorPrimary)}"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:titleTextColor="@{theme.textColorInverse}" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -47,8 +48,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/fab_margin"
-            app:backgroundTintList="@{ColorStateList.valueOf(Theme.getColor(theme.colorAccent))}"
-            app:colorFilter="@{theme.iconInverseTint}"
+            app:backgroundTintList="@{theme.fabBackground}"
+            app:colorFilter="@{theme.fabIconColor}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add_theme" />

@@ -1,5 +1,8 @@
 package ir.parsdroid.themeapp;
 
+import android.content.res.ColorStateList;
+
+import androidx.annotation.ColorInt;
 import androidx.databinding.BindingConversion;
 import ir.parsdroid.themeapp.theme.Theme;
 import java.io.File;
@@ -51,6 +54,7 @@ public class Utilities {
     }
 
     @BindingConversion
+    @ColorInt
     public static int stringToColorInt(String colorKey) {
 
         return Theme.getColor(colorKey);

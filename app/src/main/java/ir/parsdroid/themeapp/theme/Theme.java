@@ -168,6 +168,7 @@ public class Theme extends BaseObservable {
 //        }
 //    }
 
+    @ColorInt
     public static int getColor(String key) {
         Integer color = currentThemeValues.get(key);
         if (color == null) {
@@ -176,6 +177,7 @@ public class Theme extends BaseObservable {
         return color;
     }
 
+    @ColorInt
     private static int getDefaultColor(String key) {
         if (key == null) return 0;
         return defaultThemeValues.get(key);

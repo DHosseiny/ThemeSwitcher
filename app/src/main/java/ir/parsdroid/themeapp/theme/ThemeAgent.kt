@@ -17,8 +17,7 @@ import java.util.*
 
 
 /**
- * Zigzag Project
- * Created by Seyyed Davud Hosseiny on 5/15/2018.
+ * Created by Davud. ThemeApp project.
  */
 
 class ThemeAgent {
