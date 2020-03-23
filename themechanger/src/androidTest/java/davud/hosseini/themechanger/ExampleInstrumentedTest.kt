@@ -1,4 +1,4 @@
-package david.hosseini.themelibrary
+package davud.hosseini.themechanger
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,6 +17,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("david.hosseini.themelibrary.test", appContext.packageName)
+        assertEquals("davud.hosseini.themechanger.test", appContext.packageName)
     }
 }

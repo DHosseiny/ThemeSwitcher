@@ -1,4 +1,4 @@
-package david.hosseini.themelibrary
+package davud.hosseini.themechanger
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
