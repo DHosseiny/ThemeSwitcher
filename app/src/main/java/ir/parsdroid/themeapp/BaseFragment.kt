@@ -34,11 +34,10 @@ open class BaseFragment<B : ViewDataBinding> : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         view.setBackgroundColor(Theme.getColor(Theme.windowBackground))
-        view.isClickable = true
-
         Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
     }
 
+    @CallSuper
     override fun onDestroyView() {
         super.onDestroyView()
         Theme.getInstance().removeOnPropertyChangedCallback(onThemeChangedCallback)

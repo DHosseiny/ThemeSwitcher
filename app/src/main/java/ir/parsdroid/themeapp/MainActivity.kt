@@ -54,8 +54,9 @@ class MainActivity : AppCompatActivity(), InteractionListener {
                     .setAction("Action", null).show()
         }
 
-        val toggle = ActionBarDrawerToggle(
-                this, binding.drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        val toggle = ActionBarDrawerToggle(this, binding.drawerLayout, toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
     }
