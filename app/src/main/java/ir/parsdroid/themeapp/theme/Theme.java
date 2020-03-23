@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+
+import androidx.annotation.ColorInt;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import ir.parsdroid.themeapp.BR;
@@ -62,7 +64,7 @@ public class Theme extends BaseObservable {
     @Bindable
     public final String hintText = "hintText";
     @Bindable
-    public final String fabIcon = "fabIcon";
+    public final String fabIconColor = "fabIconColor";
     @Bindable
     public final String fabBackground = "fabBackground";
     @Bindable
@@ -74,11 +76,11 @@ public class Theme extends BaseObservable {
     static {
         defaultThemeValues.put(getInstance().colorPrimary, 0xFF3f51b5);
 
-        defaultThemeValues.put(getInstance().colorPrimaryLight, 0xFF757de8);
+        defaultThemeValues.put(getInstance().colorPrimaryLight, 0xFFC5CAE9);
 
-        defaultThemeValues.put(getInstance().colorPrimaryDark, 0xFF002984);
+        defaultThemeValues.put(getInstance().colorPrimaryDark, 0xFF303F9F);
 
-        defaultThemeValues.put(getInstance().colorAccent, 0xFFb2ff59);
+        defaultThemeValues.put(getInstance().colorAccent, 0xFF009688);
 
         defaultThemeValues.put(getInstance().textColorInverse, Color.WHITE);
 
@@ -94,9 +96,9 @@ public class Theme extends BaseObservable {
 
         defaultThemeValues.put(getInstance().iconInverseTint, Color.BLACK);
 
-        defaultThemeValues.put(getInstance().fabIcon, Color.WHITE);
+        defaultThemeValues.put(getInstance().fabIconColor, Color.WHITE);
 
-        defaultThemeValues.put(getInstance().fabBackground, Color.WHITE);
+        defaultThemeValues.put(getInstance().fabBackground, 0xFF009688);
 
         defaultThemeValues.put(getInstance().divider, Color.LTGRAY);
 
