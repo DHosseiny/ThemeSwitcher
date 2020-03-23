@@ -11,7 +11,7 @@ import java.util.List;
 class ThemeAdapter extends BaseAdapter<ItemThemeBinding> {
 
 
-    private List<ThemeInfo> themes;
+    private final List<ThemeInfo> themes;
     private int selectedThemePosition;
     private final BaseAdapter.OnItemClickListener<ThemeInfo> clickListener;
 

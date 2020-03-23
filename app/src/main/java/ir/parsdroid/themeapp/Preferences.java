@@ -1,8 +1,8 @@
 package ir.parsdroid.themeapp;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 public class Preferences {
 
@@ -18,10 +18,17 @@ public class Preferences {
     }
 
     public static SharedPreferences getSharedPreferences() {
-        if (sharedPreferences == null)
-            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ApplicationLoader.applicationContext);
-        return sharedPreferences;
+        if (sharedPreferences == null) {
+            sharedPreferences = getDefaultSharedPreferences();
+        }
 
+        return sharedPreferences;
+    }
+
+    private static SharedPreferences getDefaultSharedPreferences() {
+        return ApplicationLoader.applicationContext.getSharedPreferences(
+                ApplicationLoader.applicationContext.getPackageName(),
+                Context.MODE_PRIVATE);
     }
 
     private SharedPreferences.Editor getEditor() {

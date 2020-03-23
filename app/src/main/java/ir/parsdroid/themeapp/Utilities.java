@@ -15,13 +15,13 @@ import java.util.regex.Pattern;
  */
 public class Utilities {
 
-    private static Pattern pattern = Pattern.compile("[\\-0-9]+");
+    private final static Pattern pattern = Pattern.compile("[\\-0-9]+");
 
-    public static Integer parseInt(String value) {
+    public static int parseInt(String value) {
         if (value == null) {
             return 0;
         }
-        Integer val = 0;
+        int val = 0;
         try {
             Matcher matcher = pattern.matcher(value);
             if (matcher.find()) {
@@ -35,11 +35,11 @@ public class Utilities {
     }
 
     public static String getAssetsDir() {
-        return ApplicationLoader.applicationContext.getFilesDir() + "/";
+        return ApplicationLoader.applicationContext.getFilesDir().getPath();
     }
 
 
-    public static boolean copyFile(InputStream sourceFile, File destFile) throws IOException {
+    public static void copyFile(InputStream sourceFile, File destFile) throws IOException {
         OutputStream out = new FileOutputStream(destFile);
         byte[] buf = new byte[4096];
         int len;
@@ -48,7 +48,6 @@ public class Utilities {
             out.write(buf, 0, len);
         }
         out.close();
-        return true;
     }
 
     @BindingConversion
