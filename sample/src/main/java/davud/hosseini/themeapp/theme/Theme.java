@@ -1,4 +1,4 @@
-package ir.parsdroid.themeapp.theme;
+package davud.hosseini.themeapp.theme;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -8,10 +8,13 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.ColorInt;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
-import ir.parsdroid.themeapp.BR;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.jetbrains.annotations.NotNull;
+
+import davud.hosseini.themeapp.BR;
 
 public class Theme extends BaseObservable {
 

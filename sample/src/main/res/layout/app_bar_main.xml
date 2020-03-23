@@ -6,11 +6,11 @@
 
         <import type="android.content.res.ColorStateList" />
 
-        <import type="ir.parsdroid.themeapp.theme.Theme" />
+        <import type="davud.hosseini.themeapp.theme.Theme" />
 
         <variable
             name="theme"
-            type="ir.parsdroid.themeapp.theme.Theme" />
+            type="davud.hosseini.themeapp.theme.Theme" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

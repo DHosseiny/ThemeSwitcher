@@ -1,9 +1,11 @@
-package ir.parsdroid.themeapp;
+package davud.hosseini.themeapp;
 
 import androidx.annotation.NonNull;
-import ir.parsdroid.themeapp.databinding.ItemThemeBinding;
-import ir.parsdroid.themeapp.theme.ThemeInfo;
+
 import java.util.List;
+
+import davud.hosseini.themeapp.databinding.ItemThemeBinding;
+import davud.hosseini.themeapp.theme.ThemeInfo;
 
 /**
  * Created by Davud. ThemeApp project.

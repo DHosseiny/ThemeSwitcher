@@ -1,4 +1,4 @@
-package ir.parsdroid.themeapp;
+package davud.hosseini.themeapp;
 
 import android.app.Application;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package ir.parsdroid.themeapp
+package davud.hosseini.themeapp
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -9,10 +9,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.Observable
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import ir.parsdroid.themeapp.databinding.ActivityMainBinding
-import ir.parsdroid.themeapp.theme.Theme
-import ir.parsdroid.themeapp.theme.ThemeAgent
-import ir.parsdroid.themeapp.theme.ThemeInfo
+import davud.hosseini.themeapp.databinding.ActivityMainBinding
+import davud.hosseini.themeapp.theme.Theme
+import davud.hosseini.themeapp.theme.ThemeAgent
+import davud.hosseini.themeapp.theme.ThemeInfo
 
 
 class MainActivity : AppCompatActivity(), InteractionListener {

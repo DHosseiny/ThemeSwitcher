@@ -1,12 +1,14 @@
-package ir.parsdroid.themeapp;
+package davud.hosseini.themeapp;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
-import ir.parsdroid.themeapp.theme.Theme;
+
+import davud.hosseini.themeapp.theme.Theme;
 
 /**
  * Zigzag Project

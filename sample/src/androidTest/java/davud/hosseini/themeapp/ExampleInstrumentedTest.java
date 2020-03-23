@@ -1,8 +1,10 @@
-package ir.parsdroid.themeapp;
+package davud.hosseini.themeapp;
 
 import android.content.Context;
+
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -20,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("ir.parsdroid.themeapp", appContext.getPackageName());
+        assertEquals("davud.hosseini.themeapp", appContext.getPackageName());
     }
 }

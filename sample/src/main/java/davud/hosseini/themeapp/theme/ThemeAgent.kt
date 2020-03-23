@@ -1,13 +1,13 @@
-package ir.parsdroid.themeapp.theme
+package davud.hosseini.themeapp.theme
 
 import android.app.Activity
 import android.app.ActivityManager
 import android.graphics.Color
 import android.os.Build
-import ir.parsdroid.themeapp.ApplicationLoader
-import ir.parsdroid.themeapp.Preferences
-import ir.parsdroid.themeapp.Utilities
-import ir.parsdroid.themeapp.Utilities.getAssetsDir
+import davud.hosseini.themeapp.ApplicationLoader
+import davud.hosseini.themeapp.Preferences
+import davud.hosseini.themeapp.Utilities
+import davud.hosseini.themeapp.Utilities.getAssetsDir
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File

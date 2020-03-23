@@ -1,11 +1,11 @@
-package ir.parsdroid.themeapp
+package davud.hosseini.themeapp
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ir.parsdroid.themeapp.databinding.FragmentThemeBinding
-import ir.parsdroid.themeapp.theme.ThemeAgent
+import davud.hosseini.themeapp.databinding.FragmentThemeBinding
+import davud.hosseini.themeapp.theme.ThemeAgent
 
 /**
  * Created by Davud. ThemeApp project.

@@ -1,10 +1,10 @@
-package ir.parsdroid.themeapp;
+package davud.hosseini.themeapp;
 
 import android.content.res.ColorStateList;
 
 import androidx.annotation.ColorInt;
 import androidx.databinding.BindingConversion;
-import ir.parsdroid.themeapp.theme.Theme;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,6 +12,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import davud.hosseini.themeapp.theme.Theme;
 
 /**
  * Created by Davud. ThemeApp project.

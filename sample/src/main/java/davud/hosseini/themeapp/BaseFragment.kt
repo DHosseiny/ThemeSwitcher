@@ -1,4 +1,4 @@
-package ir.parsdroid.themeapp
+package davud.hosseini.themeapp
 
 import android.content.Context
 import android.os.Bundle
@@ -7,7 +7,7 @@ import androidx.annotation.CallSuper
 import androidx.databinding.Observable
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import ir.parsdroid.themeapp.theme.Theme
+import davud.hosseini.themeapp.theme.Theme
 
 open class BaseFragment<B : ViewDataBinding> : Fragment() {
 
