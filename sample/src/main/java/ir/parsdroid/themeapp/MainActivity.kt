@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.Observable
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import ir.parsdroid.themeapp.databinding.ActivityMainBinding
@@ -19,19 +20,20 @@ class MainActivity : AppCompatActivity(), InteractionListener {
     private lateinit var binding: ActivityMainBinding
 
 
-//    private val onThemeChangedCallback = object : Observable.OnPropertyChangedCallback() {
-//        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-//
-//            if (propertyId == BR.theme) {
-//            }
-//        }
-//    }
+    private val onThemeChangedCallback = object : Observable.OnPropertyChangedCallback() {
+        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+
+            if (propertyId == BR.theme) {
+
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         ThemeAgent.onStart(this)
-//        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
+        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.appBarMain.theme = Theme.getInstance()
