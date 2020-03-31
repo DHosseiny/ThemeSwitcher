@@ -5,11 +5,16 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 import davud.hosseini.themeapp.databinding.ItemThemeBinding;
-import davud.hosseini.themeapp.theme.ThemeInfo;
+import davud.hosseini.themeswitcher.core.theme.ThemeInfo;
 
 /**
  * Created by Davud. ThemeApp project.
  */
+
+/*
+ * Created by Davud. ThemeApp project.
+ */
+
 class ThemeAdapter extends BaseAdapter<ItemThemeBinding> {
 
 

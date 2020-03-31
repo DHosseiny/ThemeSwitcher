@@ -1,3 +1,7 @@
+/*
+ * Created by Davud. ThemeApp project.
+ */
+
 package davud.hosseini.themeswitcher.core.preferences
 
 import android.content.SharedPreferences
@@ -6,7 +10,12 @@ import kotlin.reflect.KProperty
 
 internal abstract class Preferences {
 
-    protected abstract val preferences: SharedPreferences
+    abstract val preferences: SharedPreferences
+
+    var themeName: String by StringPrefProperty()
+    var isAsset: Boolean by BooleanPrefProperty()
+    var background: String by StringPrefProperty()
+    var overrideBackground: Boolean by BooleanPrefProperty()
 
     protected class StringPrefProperty : ReadWriteProperty<Preferences, String> {
 

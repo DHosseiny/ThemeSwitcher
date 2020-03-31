@@ -1,3 +1,7 @@
+/*
+ * Created by Davud. ThemeApp project.
+ */
+
 package davud.hosseini.themeapp
 
 import android.os.Bundle
@@ -5,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import davud.hosseini.themeapp.databinding.FragmentThemeBinding
-import davud.hosseini.themeapp.theme.ThemeAgent
+import davud.hosseini.themeswitcher.core.theme.ThemeSwitcher
 
 /**
  * Created by Davud. ThemeApp project.
@@ -18,7 +22,7 @@ class ThemeFragment : BaseFragment<FragmentThemeBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val (themes, selectedThemePosition) = ThemeAgent.getThemes()
+        val (themes, selectedThemePosition) = ThemeSwitcher.getThemes(requireContext())
 
         adapter = ThemeAdapter(themes, selectedThemePosition, BaseAdapter.OnItemClickListener {
             interactionListener.onThemeSelected(it)

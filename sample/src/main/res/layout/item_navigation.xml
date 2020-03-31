@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--
+  ~ Created by Davud. ThemeApp project.
+  -->
+
+<layout>
 
     <data>
-
-        <import type="davud.hosseini.themeapp.theme.Theme" />
-
-        <variable
-            name="theme"
-            type="Theme" />
 
     </data>
 
@@ -24,7 +22,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            app:colorFilter="@{Theme.getColor(theme.iconTint)}"
             tools:srcCompat="@drawable/ic_menu_camera" />
 
         <TextView
@@ -33,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@{Theme.getColor(theme.textColorSecondary)}"
             tools:text="Import" />
 
     </LinearLayout>

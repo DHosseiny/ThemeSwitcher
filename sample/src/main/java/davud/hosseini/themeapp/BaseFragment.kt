@@ -1,3 +1,7 @@
+/*
+ * Created by Davud. ThemeApp project.
+ */
+
 package davud.hosseini.themeapp
 
 import android.content.Context
@@ -7,7 +11,6 @@ import androidx.annotation.CallSuper
 import androidx.databinding.Observable
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import davud.hosseini.themeapp.theme.Theme
 
 open class BaseFragment<B : ViewDataBinding> : Fragment() {
 
@@ -33,18 +36,18 @@ open class BaseFragment<B : ViewDataBinding> : Fragment() {
     @CallSuper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        view.setBackgroundColor(Theme.getColor(Theme.windowBackground))
-        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
+//        view.setBackgroundColor(Theme.getColor(Theme.windowBackground))
+//        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
     }
 
     @CallSuper
     override fun onDestroyView() {
         super.onDestroyView()
-        Theme.getInstance().removeOnPropertyChangedCallback(onThemeChangedCallback)
+//        Theme.getInstance().removeOnPropertyChangedCallback(onThemeChangedCallback)
     }
 
     private fun onThemeChanged() {
-        view?.setBackgroundColor(Theme.getColor(Theme.windowBackground))
+//        view?.setBackgroundColor(Theme.getColor(Theme.windowBackground))
     }
 
 }

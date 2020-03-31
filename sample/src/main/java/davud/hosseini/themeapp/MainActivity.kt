@@ -1,3 +1,7 @@
+/*
+ * Created by Davud. ThemeApp project.
+ */
+
 package davud.hosseini.themeapp
 
 import android.os.Bundle
@@ -10,9 +14,10 @@ import androidx.databinding.Observable
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import davud.hosseini.themeapp.databinding.ActivityMainBinding
-import davud.hosseini.themeapp.theme.Theme
-import davud.hosseini.themeapp.theme.ThemeAgent
-import davud.hosseini.themeapp.theme.ThemeInfo
+import davud.hosseini.themeswitcher.core.theme.ThemeInfo
+import davud.hosseini.themeswitcher.core.theme.ThemeSwitcher
+import davud.hosseini.themeswitcher.instantiate
+import java.io.File
 
 
 class MainActivity : AppCompatActivity(), InteractionListener {
@@ -23,20 +28,25 @@ class MainActivity : AppCompatActivity(), InteractionListener {
     private val onThemeChangedCallback = object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
 
-            if (propertyId == BR.theme) {
-
-            }
+//            if (propertyId == BR.theme) {
+//
+//            }
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        ThemeAgent.onStart(this)
-        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
+        val file = File(filesDir, "testUserTheme.attheme")
+        if (!file.exists()) {
+            file.writeText("colorPrimary=#FFFFFFFF\n" +
+                    "colorPrimaryDark=#FFF0F0F0\n")
+        }
+
+        ThemeSwitcher.instantiate(this)
+//        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        binding.appBarMain.theme = Theme.getInstance()
 
         setupView()
 
@@ -93,7 +103,7 @@ class MainActivity : AppCompatActivity(), InteractionListener {
 
     override fun onThemeSelected(theme: ThemeInfo) {
 
-        ThemeAgent.applyTheme(theme, this)
+        ThemeSwitcher.applyTheme(theme, this)
     }
 }
 

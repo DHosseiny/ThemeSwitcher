@@ -8,11 +8,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
-import davud.hosseini.themeapp.theme.Theme;
-
-/**
- * Zigzag Project
- * Created by Seyyed Davud Hosseiny on 7/3/2017.
+/*
+ * Created by Davud. ThemeApp project.
  */
 
 public abstract class BaseAdapter<B extends ViewDataBinding>
@@ -52,7 +49,7 @@ public abstract class BaseAdapter<B extends ViewDataBinding>
         }
 
         public void bind() {
-            binding.setVariable(BR.theme, Theme.getInstance());
+//            binding.setVariable(BR.theme, Theme.getInstance());
             binding.executePendingBindings();
         }
     }

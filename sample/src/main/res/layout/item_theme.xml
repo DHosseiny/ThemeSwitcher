@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Created by Davud. ThemeApp project.
+  -->
+
 <layout>
 
     <data>
 
-        <variable
-            name="theme"
-            type="davud.hosseini.themeapp.theme.Theme" />
 
     </data>
 
@@ -19,8 +20,7 @@
             android:id="@+id/text_theme"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@{theme.textColorSecondary}" />
+            android:layout_weight="1" />
 
         <RadioButton
             android:id="@+id/radio_theme"
