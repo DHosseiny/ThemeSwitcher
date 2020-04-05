@@ -61,7 +61,7 @@ object ThemeSwitcher {
 //            setTaskDescription(activity)
     }
 
-    fun getThemes(context: Context): Pair<MutableList<ThemeInfo>, Int> {
+    fun getThemes(context: Context): Pair<List<ThemeInfo>, Int> {
 
         val userDefinedThemesInfo = getUserDefinedThemesInfo(context)
 
