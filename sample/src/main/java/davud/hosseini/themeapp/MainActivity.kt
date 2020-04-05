@@ -37,10 +37,13 @@ class MainActivity : AppCompatActivity(), InteractionListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val file = File(filesDir, "testUserTheme.attheme")
+        val file = File(filesDir, "testUserTheme.xml")
         if (!file.exists()) {
-            file.writeText("colorPrimary=#FFFFFFFF\n" +
-                    "colorPrimaryDark=#FFF0F0F0\n")
+            file.writeText("<resources>\n" +
+                    "    <color name=\"colorPrimary\">#FFFFFFFF</color>\n" +
+                    "    <color name=\"colorPrimaryDark\">#FFF0F0F0</color><!--002984-->\n" +
+                    "    <color name=\"colorAccent\">#FF4081</color>\n" +
+                    "</resources>\n")
         }
 
         ThemeSwitcher.instantiate(this)
@@ -103,7 +106,7 @@ class MainActivity : AppCompatActivity(), InteractionListener {
 
     override fun onThemeSelected(theme: ThemeInfo) {
 
-        ThemeSwitcher.applyTheme(theme, this)
+        ThemeSwitcher.changeTheme(theme, this)
     }
 }
 
