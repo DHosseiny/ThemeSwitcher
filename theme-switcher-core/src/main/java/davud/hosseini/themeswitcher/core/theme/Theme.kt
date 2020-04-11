@@ -6,19 +6,24 @@ package davud.hosseini.themeswitcher.core.theme
 
 import androidx.annotation.ColorInt
 
-val colorPrimaryColor = Color("colorPrimary", -0xc0ae4b)
-
-abstract class Theme<Observable : ColorObservable<*>> {
+abstract class Theme<Observable : ColorObservable<*>>(palette: Palette = defaultPalette) {
+    internal var palette: Palette = palette
+        set(value) {
+            field = value
+            //notify Observables
+            colorPrimary.notifyObservers()
+            fabBackground.notifyObservers()
+            fabIconColor.notifyObservers()
+            textColorInverse.notifyObservers()
+        }
 
     internal var themeInfo: ThemeInfo = defaultThemeInfo
 
     abstract val colorPrimary: Observable
+    abstract val fabBackground: Observable
+    abstract val textColorInverse: Observable
+    abstract val fabIconColor: Observable
 
-
-    @OptIn(ExperimentalStdlibApi::class)
-    internal val defaultColors: Map<String, Int> = buildMap<String, Int> {
-        put(colorPrimaryColor.key, colorPrimaryColor.value)
-    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -31,21 +36,20 @@ abstract class Theme<Observable : ColorObservable<*>> {
         return themeInfo.hashCode()
     }
 
-    fun setColorValues(colorValues: Map<String, Int>) {
-//        val withDefault = colorValues.withDefault { defaultColors.getValue(it) }
-        colorPrimary.setColorValue(colorValues.getValue(colorPrimary.color.key))
-//        this.colorValues.putAll(colorValues)
-    }
-
     fun resetToDefaults() {
         themeInfo = defaultThemeInfo
-        setColorValues(defaultColors)
+        palette = defaultPalette
+    }
+
+    fun getColor(colorObservable: ColorObservable<*>): Int {
+        return palette.getColor(colorObservable.colorName)
+    }
+
+    fun getColorObject(colorObservable: ColorObservable<*>): Color {
+        return Color(colorObservable.colorName, palette.getColor(colorObservable.colorName))
     }
 }
 
-fun getColor(colorObservable: ColorObservable<*>): Int {
-    return colorObservable.color.value
-}
 
 //object ThemeJava : Theme<ColorJavaObservable>() {
 //    override val colorPrimary: ColorJavaObservable = ColorJavaObservable(colorPrimaryColor)
@@ -72,12 +76,7 @@ class Color internal constructor(val key: String, @ColorInt value: Int) {
 //}
 
 interface ColorObservable<T : ColorObserver> {
-    val color: Color
-
-    fun setColorValue(value: Int) {
-        color.value = value
-        notifyObservers()
-    }
+    val colorName: String
 
     fun addObserver(colorObserver: T)
 

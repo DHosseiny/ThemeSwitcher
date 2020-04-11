@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#202022</color>
+    <color name="colorPrimaryLight">#484848</color>
+    <color name="colorPrimaryDark">#1A1A1B</color>
+    <color name="windowBackground">#181819</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="textColorSecondary">#EBEBEB</color>
+    <color name="textColorTertiary">#828282</color>
+    <color name="iconTint">#FFFFFF</color>
+    <color name="iconInverseTint">#FFFFFF</color>
+    <color name="hintText">#7D7D7D</color>
+    <!--    <color name="dividerColor">#3A3A3A‬</color>-->
+    <!--    <color name="dialogButtonColor">#58B0E7‬</color>-->
+    <color name="switchTrackChecked">#FF459CE3</color>
+    <color name="switchTrack">#606060</color>
+    <color name="subtitleColor">#767677</color>
+</resources>

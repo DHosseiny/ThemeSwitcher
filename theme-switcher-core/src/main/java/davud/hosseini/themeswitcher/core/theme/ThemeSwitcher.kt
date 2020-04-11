@@ -25,11 +25,11 @@ object ThemeSwitcher {
         if (themeName != DEFAULT) {
 
             val isAsset: Boolean = preferences.isAsset
-            val colors: Map<String, Int> = parserUtils.readThemeFileValues(activity, themeName, isAsset)
+            val palette = parserUtils.readThemeFileValues(activity, themeName, isAsset)
             val themeInfo = ThemeInfo(themeName, isAsset)
 
             theme.themeInfo = themeInfo
-            theme.setColorValues(colors)
+            theme.palette = palette
 
             //val overrideChatBackground = preferences.overrideBackground
             //loadWallpaper(activity)
@@ -93,9 +93,9 @@ object ThemeSwitcher {
 //            }
 //        }
 
-    private fun setTheme(themeInfo: ThemeInfo, colorValues: Map<String, Int>) {
+    private fun setTheme(themeInfo: ThemeInfo, palette: Palette) {
         instance.themeInfo = themeInfo
-        instance.setColorValues(colorValues)
+        instance.palette = palette
         //        loadWallpaper(ApplicationLoader.applicationContext);
     }
 

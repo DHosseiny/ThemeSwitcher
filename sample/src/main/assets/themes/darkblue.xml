@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#212D3B</color>
+    <color name="colorPrimaryDark">#1A242F</color>
+    <color name="windowBackground">#1D2733</color>
+    <color name="textColorPrimary">white</color>
+    <color name="textColorSecondary">#E9EEF4</color>
+    <color name="textColorTertiary">#7D8B99</color>
+    <color name="iconTint">white</color>
+    <color name="iconInverseTint">white</color>
+    <color name="hintText">#7D8B99</color>
+    <!--    <color name="dividerColor">#95000000‬</color>-->
+    <!--    <color name="dialogButtonColor">#64B5EF‬</color>-->
+    <color name="switchTrackChecked">#61A3D7</color>
+    <color name="switchTrack">#5D7484</color>
+    <color name="subtitleColor">#7D8B99</color>
+</resources>

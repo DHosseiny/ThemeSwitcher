@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    colors can be used with name according to the https://developer.android.com/reference/android/graphics/Color#parseColor(java.lang.String)-->
+    <!--    red, blue, green, black, white, gray, cyan, magenta, yellow, -->
+    <!--    lightgray, darkgray, grey, lightgrey, darkgrey, -->
+    <!--    aqua, fuchsia, lime, maroon, navy, olive, purple, silver, and teal.-->
+
+    <color name="colorPrimary">#3f51b5</color>
+    <color name="colorPrimaryLight">#C5CAE9</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#009688</color>
+    <color name="textColorInverse">white</color>
+    <color name="textColorPrimary">black</color>
+    <color name="textColorSecondary">black</color>
+    <color name="textColorTertiary">darkgray</color>
+    <color name="windowBackground">white</color>
+    <color name="iconTint">white</color>
+    <color name="iconInverseTint">black</color>
+    <color name="fabIconColor">white</color>
+    <color name="fabBackground">#009688</color>
+    <color name="dividerColor">lightgray</color>
+    <color name="hintText">lightgray</color>
+    <color name="hyperText">blue</color>
+</resources>

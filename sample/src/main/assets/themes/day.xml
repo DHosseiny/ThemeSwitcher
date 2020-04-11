@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">white</color>
+    <color name="colorPrimaryDark">#F0F0F0</color>
+    <color name="textColorInverse">#DD000000</color>
+    <color name="iconInverseTint">#000000</color>
+    <color name="textColorTertiary">#8B8D8F</color>
+    <color name="fabBackground">#D9DBDF</color>
+    <color name="fabIconColor">#33404C</color>
+</resources>
