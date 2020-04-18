@@ -26,9 +26,9 @@ class Palette(private val colors: Map<String, Int>) {
 
     companion object {
 
-        const val colorPrimary = "colorPrimary"
-        const val fabBackground = "fabBackground"
-        const val fabIconColor = "fabIconColor"
-        const val textColorInverse = "textColorInverse"
+        internal const val colorPrimary = "colorPrimary"
+        internal const val fabBackground = "fabBackground"
+        internal const val fabIconColor = "fabIconColor"
+        internal const val textColorInverse = "textColorInverse"
     }
 }
