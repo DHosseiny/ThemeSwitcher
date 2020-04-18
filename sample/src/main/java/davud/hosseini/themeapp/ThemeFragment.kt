@@ -25,7 +25,7 @@ class ThemeFragment : BaseFragment<FragmentThemeBinding>() {
         val (themes, selectedThemePosition) = ThemeSwitcher.getThemes(requireContext())
 
         adapter = ThemeAdapter(themes, selectedThemePosition, BaseAdapter.OnItemClickListener {
-            interactionListener.onThemeSelected(it)
+            ThemeSwitcher.changeTheme(it, requireActivity())
             adapter.setSelectedThemePosition(themes.indexOf(it))
             adapter.notifyDataSetChanged()
         })

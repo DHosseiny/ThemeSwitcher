@@ -4,7 +4,6 @@
 
 package davud.hosseini.themeapp
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.CallSuper
@@ -14,7 +13,6 @@ import androidx.fragment.app.Fragment
 
 open class BaseFragment<B : ViewDataBinding> : Fragment() {
 
-    lateinit var interactionListener: InteractionListener
     lateinit var binding: B
 
 
@@ -25,12 +23,6 @@ open class BaseFragment<B : ViewDataBinding> : Fragment() {
             onThemeChanged()
 //            }
         }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        interactionListener = context as InteractionListener
     }
 
     @CallSuper

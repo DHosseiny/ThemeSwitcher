@@ -16,12 +16,11 @@ import com.google.android.material.snackbar.Snackbar
 import davud.hosseini.themeapp.databinding.ActivityMainBinding
 import davud.hosseini.themeswitcher.DataBindingThemeSwitcher
 import davud.hosseini.themeswitcher.core.theme.Theme
-import davud.hosseini.themeswitcher.core.theme.ThemeInfo
 import davud.hosseini.themeswitcher.core.theme.ThemeSwitcher
 import java.io.File
 
 
-class MainActivity : AppCompatActivity(), InteractionListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -98,15 +97,4 @@ class MainActivity : AppCompatActivity(), InteractionListener {
 //        } else super.onOptionsItemSelected(item)
 //
 //    }
-
-
-    override fun onThemeSelected(theme: ThemeInfo) {
-
-        ThemeSwitcher.changeTheme(theme, this)
-    }
-}
-
-interface InteractionListener {
-
-    fun onThemeSelected(theme: ThemeInfo)
 }
