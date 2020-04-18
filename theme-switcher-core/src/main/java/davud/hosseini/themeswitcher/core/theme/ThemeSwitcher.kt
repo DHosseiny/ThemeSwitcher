@@ -111,8 +111,7 @@ object ThemeSwitcher {
 
     private fun checkMainThread() {
         check(Thread.currentThread() == Looper.getMainLooper().thread) {
-            "Method cannot be called off the main application thread (on: " +
-                    "${Thread.currentThread().name})"
+            "changing theme cannot be done off the main thread (on: ${Thread.currentThread().name})"
         }
     }
 
