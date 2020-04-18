@@ -5,54 +5,36 @@ package davud.hosseini.themeswitcher.core.theme
 
 import android.app.Activity
 import android.content.Context
+import android.os.Looper
 import davud.hosseini.themeswitcher.core.parser.ParserUtils
 import davud.hosseini.themeswitcher.core.preferences.Preferences
 import davud.hosseini.themeswitcher.core.preferences.PreferencesImpl
 
 object ThemeSwitcher {
 
-    private lateinit var instance: Theme<*>
+    lateinit var theme: Theme
+        private set
 
     private val parserUtils: ParserUtils by lazy { ParserUtils() }
 
-    fun instantiate(activity: Activity, theme: Theme<*>) {
-        if (::instance.isInitialized) return
-        instance = theme
+    fun setup(activity: Activity) {
 
         val preferences: Preferences = PreferencesImpl(context = activity)
         val themeName: String = preferences.themeName.ifEmpty { DEFAULT }
+        val isAsset: Boolean = preferences.isAsset
+        val themeInfo = ThemeInfo(themeName, isAsset)
 
-        if (themeName != DEFAULT) {
-
-            val isAsset: Boolean = preferences.isAsset
-            val palette = parserUtils.readThemeFileValues(activity, themeName, isAsset)
-            val themeInfo = ThemeInfo(themeName, isAsset)
-
-            theme.themeInfo = themeInfo
-            theme.palette = palette
-
-            //val overrideChatBackground = preferences.overrideBackground
-            //loadWallpaper(activity)
-        } //don't need to notify on start
-
-//    must be after setTheme() to load proper colors
-//            changeStatusBarColor(activity)
-//            setTaskDescription(activity)
-
+        setTheme(activity, themeInfo, notifyObservers = false)
     }
 
     fun changeTheme(themeInfo: ThemeInfo, activity: Activity) {
+        checkMainThread()
         val preferences: Preferences = PreferencesImpl(context = activity)
 
         preferences.themeName = themeInfo.name
         preferences.isAsset = themeInfo.isAsset
 
-        if (themeInfo.name == DEFAULT) {
-            resetTheme()
-        } else setTheme(themeInfo, parserUtils.readThemeFileValues(activity, themeInfo.name, themeInfo.isAsset))
-
-//            changeStatusBarColor(activity)
-//            setTaskDescription(activity)
+        setTheme(activity, themeInfo, notifyObservers = true)
     }
 
     fun getThemes(context: Context): Pair<List<ThemeInfo>, Int> {
@@ -64,7 +46,7 @@ object ThemeSwitcher {
         themeInfoList.addAll(predefinedThemesInfo)
         themeInfoList.addAll(userDefinedThemesInfo)
 
-        val selectedThemeIndex = themeInfoList.indexOfFirst { it == instance.themeInfo }
+        val selectedThemeIndex = themeInfoList.indexOfFirst { it == theme.themeInfo }
 
         return themeInfoList to selectedThemeIndex
     }
@@ -93,17 +75,45 @@ object ThemeSwitcher {
 //            }
 //        }
 
-    private fun setTheme(themeInfo: ThemeInfo, palette: Palette) {
-        instance.themeInfo = themeInfo
-        instance.palette = palette
-        //        loadWallpaper(ApplicationLoader.applicationContext);
+    private fun setTheme(activity: Activity, themeInfo: ThemeInfo, notifyObservers: Boolean) {
+
+        fun onThemeChanged(activity: Activity, notifyObservers: Boolean) {
+//            changeStatusBarColor(activity)
+//            setTaskDescription(activity)
+//            val overrideChatBackground = preferences.overrideBackground
+//            loadWallpaper(activity)
+            if (notifyObservers) notifyObservers()
+        }
+
+        val palette = if (themeInfo.isDefault) {
+            defaultPalette
+        } else {
+            parserUtils.readThemeFileValues(activity, themeInfo)
+        }
+
+        theme = Theme(themeInfo, palette)
+        onThemeChanged(activity, notifyObservers)
     }
 
-    private fun resetTheme() {
-        instance.resetToDefaults()
-        //        loadWallpaper(ApplicationLoader.applicationContext);
+    private val themeChangeListeners: MutableList<(Theme) -> Unit> by lazy(::mutableListOf)
+
+    fun addThemeChangeListener(themeObserver: (Theme) -> Unit) {
+        themeChangeListeners.add(themeObserver)
     }
-//private fun notifyPropertyChanged() {
-//    instance.colorPrimary.notifyObservers()
-//}
+
+    fun removeThemeChangeListener(themeObserver: (Theme) -> Unit) {
+        themeChangeListeners.remove(themeObserver)
+    }
+
+    private fun notifyObservers() {
+        themeChangeListeners.forEach { it(theme) }
+    }
+
+    private fun checkMainThread() {
+        check(Thread.currentThread() == Looper.getMainLooper().thread) {
+            "Method cannot be called off the main application thread (on: " +
+                    "${Thread.currentThread().name})"
+        }
+    }
+
 }

@@ -6,53 +6,19 @@
 
 package davud.hosseini.themeswitcher
 
-import androidx.databinding.BaseObservable
-import androidx.databinding.Observable
-import davud.hosseini.themeswitcher.BindingTheme.colorPrimary
-import davud.hosseini.themeswitcher.BindingTheme.fabBackground
-import davud.hosseini.themeswitcher.BindingTheme.fabIconColor
-import davud.hosseini.themeswitcher.BindingTheme.textColorInverse
-import davud.hosseini.themeswitcher.core.theme.*
+import androidx.databinding.ObservableField
+import davud.hosseini.themeswitcher.core.theme.ColorKey
+import davud.hosseini.themeswitcher.core.theme.Theme
+import davud.hosseini.themeswitcher.core.theme.ThemeSwitcher
 
-val colorPrimary: ColorObservableField = colorPrimary
-val textColorInverse: ColorObservableField = textColorInverse
-val fabBackground: ColorObservableField = fabBackground
-val fabIconColor: ColorObservableField = fabIconColor
+private val theme: Theme
+    get() = ThemeSwitcher.theme
 
-object BindingTheme : Theme<ColorObservableField>() {
+val colorPrimary: ObservableField<ColorKey> = ObservableField(Theme.colorPrimary)
+val textColorInverse: ObservableField<ColorKey> = ObservableField(Theme.textColorInverse)
+val fabBackground: ObservableField<ColorKey> = ObservableField(Theme.fabBackground)
+val fabIconColor: ObservableField<ColorKey> = ObservableField(Theme.fabIconColor)
 
-    override val colorPrimary = ColorObservableField(Palette.colorPrimary)
-    override val textColorInverse = ColorObservableField(Palette.textColorInverse)
-    override val fabBackground = ColorObservableField(Palette.fabBackground)
-    override val fabIconColor = ColorObservableField(Palette.fabIconColor)
-}
-
-fun getColor(colorObservable: ColorObservable<*>): Int {
-    return BindingTheme.getColor(colorObservable)
-}
-
-class ColorObservableField(override val colorName: String) : ColorObservable<ColorObserverField>, BaseObservable() {
-    override fun addObserver(colorObserver: ColorObserverField) {
-        addOnPropertyChangedCallback(colorObserver)
-    }
-
-    override fun removeObserver(colorObserver: ColorObserverField) {
-        removeOnPropertyChangedCallback(colorObserver)
-    }
-
-    override fun notifyObservers() {
-        notifyChange()
-    }
-
-}
-
-open class ColorObserverField : ColorObserver, Observable.OnPropertyChangedCallback() {
-
-    override fun onColorChanged(color: Color) {
-        //Not Implemented
-    }
-
-    override fun onPropertyChanged(sender: Observable, propertyId: Int) {
-        onColorChanged(BindingTheme.getColorObject(sender as ColorObservableField))
-    }
+fun getColor(colorKey: ObservableField<ColorKey>): Int {
+    return theme.getColor(colorKey.get()!!)
 }

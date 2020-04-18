@@ -18,4 +18,7 @@ data class ThemeInfo @JvmOverloads constructor(val name: String, val isAsset: Bo
     override fun hashCode(): Int {
         return name.hashCode()
     }
+
+    val isDefault
+        get() = name == DEFAULT
 }

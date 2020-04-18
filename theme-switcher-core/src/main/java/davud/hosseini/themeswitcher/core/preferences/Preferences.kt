@@ -13,7 +13,7 @@ internal abstract class Preferences {
     abstract val preferences: SharedPreferences
 
     var themeName: String by StringPrefProperty()
-    var isAsset: Boolean by BooleanPrefProperty()
+    var isAsset: Boolean by BooleanPrefProperty(true)
     var background: String by StringPrefProperty()
     var overrideBackground: Boolean by BooleanPrefProperty()
 
@@ -28,10 +28,10 @@ internal abstract class Preferences {
         }
     }
 
-    protected class BooleanPrefProperty : ReadWriteProperty<Preferences, Boolean> {
+    protected class BooleanPrefProperty(private val defaultValue: Boolean = false) : ReadWriteProperty<Preferences, Boolean> {
 
         override fun getValue(thisRef: Preferences, property: KProperty<*>): Boolean {
-            return thisRef.preferences.getBoolean(property.name, false)
+            return thisRef.preferences.getBoolean(property.name, defaultValue)
         }
 
         override fun setValue(thisRef: Preferences, property: KProperty<*>, value: Boolean) {

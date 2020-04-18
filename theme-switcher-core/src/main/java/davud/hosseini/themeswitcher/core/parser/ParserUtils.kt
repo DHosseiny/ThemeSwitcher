@@ -4,28 +4,28 @@
 
 package davud.hosseini.themeswitcher.core.parser
 
-import android.app.Activity
 import android.content.Context
 import davud.hosseini.themeswitcher.core.theme.ASSETS_SUBFOLDER
 import davud.hosseini.themeswitcher.core.theme.Palette
+import davud.hosseini.themeswitcher.core.theme.ThemeInfo
 import java.io.File
 import java.io.InputStream
 
 class ParserUtils {
 
-    internal fun readThemeFileValues(context: Activity, name: String, isAsset: Boolean): Palette {
-        val inputStream: InputStream = getInputStream(isAsset, context, name)
+    internal fun readThemeFileValues(context: Context, themeInfo: ThemeInfo): Palette {
+        val inputStream: InputStream = getInputStream(context, themeInfo)
 
         val colorsMap = ColorsXmlParser.parse(inputStream)
 
         return Palette(colorsMap)
     }
 
-    private fun getInputStream(isAsset: Boolean, context: Activity, name: String): InputStream {
+    private fun getInputStream(context: Context, themeInfo: ThemeInfo): InputStream {
         //name of the file without extension is equal to theme name
-        val fileName = "$name.xml"
+        val fileName = "${themeInfo.name}.xml"
 
-        return if (isAsset) {
+        return if (themeInfo.isAsset) {
             inputStreamFromAssetsFile(context, fileName)
         } else inputStreamFromFile(context.filesDir, fileName)
     }

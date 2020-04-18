@@ -7,16 +7,17 @@ package davud.hosseini.themeswitcher
 import android.content.res.ColorStateList
 import androidx.annotation.ColorInt
 import androidx.databinding.BindingConversion
-import davud.hosseini.themeswitcher.core.theme.ColorObservable
+import androidx.databinding.ObservableField
+import davud.hosseini.themeswitcher.core.theme.ColorKey
 
 
 @BindingConversion
 @ColorInt
-fun stringToColorInt(colorObservable: ColorObservableField): Int {
-    return BindingTheme.getColor(colorObservable)
+fun stringToColorInt(colorObservable: ObservableField<ColorKey>): Int {
+    return getColor(colorObservable)
 }
 
 @BindingConversion
-fun stringToColorStateList(colorObservable: ColorObservable<*>): ColorStateList {
-    return ColorStateList.valueOf(BindingTheme.getColor(colorObservable))
+fun stringToColorStateList(colorObservable: ObservableField<ColorKey>): ColorStateList {
+    return ColorStateList.valueOf(getColor(colorObservable))
 }

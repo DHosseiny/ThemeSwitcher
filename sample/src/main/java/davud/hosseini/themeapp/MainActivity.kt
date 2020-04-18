@@ -5,18 +5,19 @@
 package davud.hosseini.themeapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.Observable
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import davud.hosseini.themeapp.databinding.ActivityMainBinding
+import davud.hosseini.themeswitcher.DataBindingThemeSwitcher
+import davud.hosseini.themeswitcher.core.theme.Theme
 import davud.hosseini.themeswitcher.core.theme.ThemeInfo
 import davud.hosseini.themeswitcher.core.theme.ThemeSwitcher
-import davud.hosseini.themeswitcher.instantiate
 import java.io.File
 
 
@@ -25,13 +26,8 @@ class MainActivity : AppCompatActivity(), InteractionListener {
     private lateinit var binding: ActivityMainBinding
 
 
-    private val onThemeChangedCallback = object : Observable.OnPropertyChangedCallback() {
-        override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-
-//            if (propertyId == BR.theme) {
-//
-//            }
-        }
+    private fun onThemeChanged(theme: Theme) {
+        Toast.makeText(this, "Theme changed to ${theme.themeInfo.name}", Toast.LENGTH_LONG).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +42,8 @@ class MainActivity : AppCompatActivity(), InteractionListener {
                     "</resources>\n")
         }
 
-        ThemeSwitcher.instantiate(this)
-//        Theme.getInstance().addOnPropertyChangedCallback(onThemeChangedCallback)
+        DataBindingThemeSwitcher.setup(this)
+        ThemeSwitcher.addThemeChangeListener(::onThemeChanged)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
