@@ -9,10 +9,10 @@ class Theme(val themeInfo: ThemeInfo = defaultThemeInfo,
 
     companion object {
 
-        val colorPrimary = ColorKey(Palette.colorPrimary)
-        val fabBackground = ColorKey(Palette.fabBackground)
-        val textColorInverse = ColorKey(Palette.fabIconColor)
-        val fabIconColor = ColorKey(Palette.textColorInverse)
+        val colorPrimary = ColorKey("colorPrimary")
+        val fabBackground = ColorKey("fabBackground")
+        val textColorInverse = ColorKey("fabIconColor")
+        val fabIconColor = ColorKey("textColorInverse")
     }
 
     override fun equals(other: Any?): Boolean {
@@ -27,7 +27,7 @@ class Theme(val themeInfo: ThemeInfo = defaultThemeInfo,
     }
 
     fun getColor(colorKey: ColorKey): Int {
-        return palette.getColor(colorKey.key)
+        return palette.getColor(colorKey)
     }
 
 }

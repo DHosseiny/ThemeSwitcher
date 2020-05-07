@@ -2,6 +2,7 @@ package davud.hosseini.themeswitcher.core.parser;
 
 import android.graphics.Color.parseColor
 import android.util.Xml
+import davud.hosseini.themeswitcher.core.theme.ColorKey
 import org.xmlpull.v1.XmlPullParser
 import org.xmlpull.v1.XmlPullParserException
 import java.io.IOException
@@ -14,7 +15,7 @@ object ColorsXmlParser {
     private const val NAME_ATTR: String = "name"
 
     @Throws(XmlPullParserException::class, IOException::class)
-    fun parse(inputStream: InputStream): Map<String, Int> {
+    fun parse(inputStream: InputStream): Map<ColorKey, Int> {
         inputStream.use {
             val parser: XmlPullParser = Xml.newPullParser()
             parser.setInput(inputStream, null)
@@ -24,13 +25,13 @@ object ColorsXmlParser {
     }
 
     @Throws(XmlPullParserException::class, IOException::class)
-    private fun readResources(parser: XmlPullParser): Map<String, Int> {
-        val colors = mutableMapOf<String, Int>()
+    private fun readResources(parser: XmlPullParser): Map<ColorKey, Int> {
+        val colors = mutableMapOf<ColorKey, Int>()
 
         parser.require(XmlPullParser.START_TAG, null, RESOURCES_TAG)
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.eventType == XmlPullParser.START_TAG && parser.name == COLOR_TAG) {
-                val key: String = readKey(parser)
+                val key: ColorKey = readKey(parser)
                 val value: Int = readValue(parser)
 
                 colors[key] = value
@@ -39,7 +40,7 @@ object ColorsXmlParser {
         return colors
     }
 
-    private fun readKey(parser: XmlPullParser): String = parser.getAttributeValue(null, NAME_ATTR)
+    private fun readKey(parser: XmlPullParser): ColorKey = ColorKey(parser.getAttributeValue(null, NAME_ATTR))
 
     private fun readValue(parser: XmlPullParser): Int = parseColor(parser.nextText())
 
