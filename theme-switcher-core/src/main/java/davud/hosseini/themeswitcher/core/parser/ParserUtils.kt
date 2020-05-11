@@ -1,5 +1,5 @@
 /*
- * Created by Davud. ThemeApp project.
+ * Created by DHosseiny. ThemeSwitcher project.
  */
 
 package davud.hosseini.themeswitcher.core.parser

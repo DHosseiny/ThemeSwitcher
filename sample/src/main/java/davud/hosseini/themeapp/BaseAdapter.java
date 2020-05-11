@@ -9,7 +9,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.recyclerview.widget.RecyclerView;
 
 /*
- * Created by Davud. ThemeApp project.
+ * Created by DHosseiny. ThemeSwitcher project.
  */
 
 public abstract class BaseAdapter<B extends ViewDataBinding>

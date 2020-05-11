@@ -12,7 +12,7 @@ import davud.hosseini.themeswitcher.core.theme.ThemeInfo;
  */
 
 /*
- * Created by Davud. ThemeApp project.
+ * Created by DHosseiny. ThemeSwitcher project.
  */
 
 class ThemeAdapter extends BaseAdapter<ItemThemeBinding> {

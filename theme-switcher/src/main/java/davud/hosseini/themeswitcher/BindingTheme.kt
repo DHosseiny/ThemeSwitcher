@@ -1,5 +1,5 @@
 /*
- * Created by Davud. ThemeApp project.
+ * Created by DHosseiny. ThemeSwitcher project.
  */
 
 @file:JvmName("Theme")
