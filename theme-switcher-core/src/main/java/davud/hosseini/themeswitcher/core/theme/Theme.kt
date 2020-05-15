@@ -11,8 +11,8 @@ class Theme(val themeInfo: ThemeInfo = defaultThemeInfo,
 
         val colorPrimary = ColorKey("colorPrimary")
         val fabBackground = ColorKey("fabBackground")
-        val textColorInverse = ColorKey("fabIconColor")
-        val fabIconColor = ColorKey("textColorInverse")
+        val textColorInverse = ColorKey("textColorInverse")
+        val fabIconColor = ColorKey("fabIconColor")
     }
 
     override fun equals(other: Any?): Boolean {
