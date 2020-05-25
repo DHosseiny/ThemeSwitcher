@@ -1,3 +1,1 @@
-include ':sample'
-include ':theme-switcher'
-include ':theme-switcher-core'
+include ':sample', ':plugin', ':theme-switcher', ':theme-switcher-core'
