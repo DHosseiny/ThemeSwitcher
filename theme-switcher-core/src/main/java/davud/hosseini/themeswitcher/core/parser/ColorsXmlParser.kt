@@ -40,7 +40,7 @@ object ColorsXmlParser {
         return colors
     }
 
-    private fun readKey(parser: XmlPullParser): ColorKey = ColorKey(parser.getAttributeValue(null, NAME_ATTR))
+    private fun readKey(parser: XmlPullParser): ColorKey = parser.getAttributeValue(null, NAME_ATTR)
 
     private fun readValue(parser: XmlPullParser): Int = parseColor(parser.nextText())
 

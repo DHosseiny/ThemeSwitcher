@@ -9,10 +9,10 @@ class Theme(val themeInfo: ThemeInfo = defaultThemeInfo,
 
     companion object {
 
-        val colorPrimary = ColorKey("colorPrimary")
-        val fabBackground = ColorKey("fabBackground")
-        val textColorInverse = ColorKey("textColorInverse")
-        val fabIconColor = ColorKey("fabIconColor")
+        const val colorPrimary: ColorKey = "colorPrimary"
+        const val fabBackground: ColorKey = "fabBackground"
+        const val textColorInverse: ColorKey = "textColorInverse"
+        const val fabIconColor: ColorKey = "fabIconColor"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -32,4 +32,4 @@ class Theme(val themeInfo: ThemeInfo = defaultThemeInfo,
 
 }
 
-data class ColorKey internal constructor(internal val key: String)
+typealias ColorKey = String
