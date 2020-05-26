@@ -3,9 +3,9 @@ package davud.hosseini.themeswitcherplugin.plugin
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.api.BaseVariant
 import davud.hosseini.themeswitcherplugin.plugin.ProjectScopedConfiguration.Companion.checkAndroidPlugin
+import davud.hosseini.themeswitcherplugin.plugin.exceptions.RepetitiveColorFileException
 import davud.hosseini.themeswitcherplugin.plugin.model.ThemeSwitcherExtension
 import davud.hosseini.themeswitcherplugin.plugin.tasks.CreateThemesTask
-import davud.hosseini.themeswitcherplugin.plugin.tasks.CreateThemesTask.Companion.taskNameForVariant
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
@@ -47,25 +47,26 @@ private class ProjectScopedConfiguration(private val project: Project) {
 
         project.afterEvaluate {
             buildVariants.configureEach {
-                configureKotlinTask(this, colorsFilesPath)
+                configureCreateThemesTask(this, colorsFilesPath)
             }
         }
     }
 
-    private fun configureKotlinTask(variant: BaseVariant, colorsFilesPath: String) {
+    private fun configureCreateThemesTask(variant: BaseVariant, colorsFilesPath: String) {
 
         val outputSrcDir = getGeneratedKotlinOutputDirForVariant(variant.name)
 
 
-        val task = project.tasks.register<CreateThemesTask>(taskNameForVariant(variant)) {
-            xmlFilesCollection.setFrom(variant.colorFilesOfVariant(colorsFilesPath))
-            this.outputSrcDir.set(outputSrcDir)
+        val task = project.tasks
+            .register<CreateThemesTask>(CreateThemesTask.taskNameForVariant(variant)) {
+                xmlFilesCollection.setFrom(variant.colorFilesOfVariant(colorsFilesPath))
+                this.outputSrcDir.set(outputSrcDir)
 
-            project.logger.debug(
-                "Configured kotlin generation task for [${variant.name}] variant set\n" +
-                        "Registered new kotlin source directory - $outputSrcDir"
-            )
-        }
+                project.logger.debug(
+                    "Configured kotlin generation task for [${variant.name}] variant set\n" +
+                            "Registered new kotlin source directory - $outputSrcDir"
+                )
+            }
 
 
         // Have to configure task here until agp supports task provider https://issuetracker.google.com/issues/150799913
@@ -81,7 +82,19 @@ private class ProjectScopedConfiguration(private val project: Project) {
             }.flatMap {
                 it.xmlFilesInDir()
             }
-            .distinct() //TODO: Decide about what to do when there is repetitive files
+            .also {
+                checkFilesWithRepetitiveNames(it)
+            }
+
+    private fun checkFilesWithRepetitiveNames(colorFiles: List<File>) {
+        colorFiles.groupingBy { it.name }
+            .eachCount().forEach {
+                if (it.value > 1) {
+                    throw RepetitiveColorFileException(it.key, it.value)
+                }
+            }
+    }
+
 
     /**
      * Returns kotlin source root directory where files will be generated for given variant.

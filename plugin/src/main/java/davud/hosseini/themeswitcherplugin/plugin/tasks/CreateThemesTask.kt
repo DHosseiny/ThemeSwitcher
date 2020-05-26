@@ -2,17 +2,16 @@
  * Created by DHosseiny. ThemeSwitcher project.
  */
 
-/*
- * Created by DHosseiny. ThemeSwitcher project.
- */
-
 package davud.hosseini.themeswitcherplugin.plugin.tasks
 
 import com.android.build.gradle.api.BaseVariant
 import com.squareup.kotlinpoet.*
 import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
 import org.gradle.api.DefaultTask
+import org.gradle.api.file.ConfigurableFileCollection
+import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.model.ObjectFactory
+import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputDirectory
@@ -26,37 +25,41 @@ open class CreateThemesTask @javax.inject.Inject constructor(objects: ObjectFact
     DefaultTask() {
 
     @get:OutputDirectory
-    val outputSrcDir = objects.directoryProperty()
+    val outputSrcDir: DirectoryProperty = objects.directoryProperty()
 
     @get:Input
-    var className = objects.property<String>().value("AssetFileKt")
+    var className: Property<String> = objects.property<String>().value("ThemesInfo")
 
     @get:InputFiles
-    val xmlFilesCollection = objects.fileCollection()
+    val xmlFilesCollection: ConfigurableFileCollection = objects.fileCollection()
 
     @TaskAction
     fun generateKotlinFile() {
 
-        val listOfThemeInfo: ParameterizedTypeName = List::class.parameterizedBy(String::class)
+        val listClassName = ClassName("kotlin.collections", "List")
+        val themeInfoClassName = ClassName("davud.hosseini.themeswitcher.core.theme", "ThemeInfo")
+        val listOfThemeInfo: ParameterizedTypeName =
+            listClassName.parameterizedBy(themeInfoClassName)
+
         val listOf = MemberName("kotlin.collections", "listOf")
 
         val themeInfos =
             xmlFilesCollection.files.joinToString { "ThemeInfo(\"${it.nameWithoutExtension}\")" }
         logger.lifecycle("generateKotlinFile: $themeInfos")
 
-        val predefinedThemesInfo = PropertySpec.builder("predefinedThemesInfo", listOfThemeInfo)
+        val assetsThemeInfoList = PropertySpec.builder("assetsThemeInfoList", listOfThemeInfo)
             .addModifiers(KModifier.INTERNAL)
             .initializer("%M($themeInfos)", listOf)
             .build()
 
 
         // generating kt file
-        FileSpec.builder(javaClass.`package`.name, className.get())
-            .addProperty(predefinedThemesInfo)
+        FileSpec.builder("davud.hosseini.themeswitcher", className.get())
+            .addProperty(assetsThemeInfoList)
             .build()
             .writeTo(outputSrcDir.asFile.get())
 
-        logger.lifecycle("generating asset kotlin file ${javaClass.`package`.name}.${className.get()} in ${outputSrcDir.asFile.get()}")
+        logger.lifecycle("generating asset kotlin file davud.hosseini.themeswitcher.${className.get()} in ${outputSrcDir.asFile.get()}")
     }
 
     companion object {
