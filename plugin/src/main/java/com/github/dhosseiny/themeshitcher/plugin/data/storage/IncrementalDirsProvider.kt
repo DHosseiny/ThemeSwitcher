@@ -2,7 +2,7 @@
 // * Created by DHosseiny. ThemeSwitcher project.
 // */
 //
-package davud.hosseini.themeswitcherplugin.plugin.data.storage
+package com.github.dhosseiny.themeshitcher.plugin.data.storage
 //
 //import davud.hosseini.themeswitcherplugin.plugin.data.helpers.AndroidVariantHelper
 //import java.io.File

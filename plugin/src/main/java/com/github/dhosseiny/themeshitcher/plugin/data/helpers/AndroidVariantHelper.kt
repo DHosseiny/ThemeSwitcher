@@ -1,4 +1,4 @@
-package davud.hosseini.themeswitcherplugin.plugin.data.helpers
+package com.github.dhosseiny.themeshitcher.plugin.data.helpers
 //
 //import com.likethesalad.placeholder.models.TasksNamesModel
 //import org.gradle.api.Task

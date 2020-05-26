@@ -2,7 +2,7 @@
  * Created by DHosseiny. ThemeSwitcher project.
  */
 
-package davud.hosseini.themeswitcherplugin.plugin.exceptions
+package com.github.dhosseiny.themeshitcher.plugin.exceptions
 
 class RepetitiveColorFileException(fileName: String, repeatCount: Int) :
     IllegalStateException(

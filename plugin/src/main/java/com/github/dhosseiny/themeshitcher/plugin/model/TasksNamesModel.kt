@@ -1,4 +1,4 @@
-package davud.hosseini.themeswitcherplugin.plugin.model
+package com.github.dhosseiny.themeshitcher.plugin.model
 
 class TasksNamesModel(val buildVariant: String) {
 

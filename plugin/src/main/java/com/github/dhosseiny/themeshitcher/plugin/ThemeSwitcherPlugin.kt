@@ -1,11 +1,15 @@
-package davud.hosseini.themeswitcherplugin.plugin
+/*
+ * Created by DHosseiny. ThemeSwitcher project.
+ */
+
+package com.github.dhosseiny.themeshitcher.plugin
 
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.api.BaseVariant
-import davud.hosseini.themeswitcherplugin.plugin.ProjectScopedConfiguration.Companion.checkAndroidPlugin
-import davud.hosseini.themeswitcherplugin.plugin.exceptions.RepetitiveColorFileException
-import davud.hosseini.themeswitcherplugin.plugin.model.ThemeSwitcherExtension
-import davud.hosseini.themeswitcherplugin.plugin.tasks.CreateThemesTask
+import com.github.dhosseiny.themeshitcher.plugin.ProjectScopedConfiguration.Companion.checkAndroidPlugin
+import com.github.dhosseiny.themeshitcher.plugin.exceptions.RepetitiveColorFileException
+import com.github.dhosseiny.themeshitcher.plugin.model.ThemeSwitcherExtension
+import com.github.dhosseiny.themeshitcher.plugin.tasks.CreateThemesTask
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project

@@ -2,7 +2,7 @@
  * Created by DHosseiny. ThemeSwitcher project.
  */
 
-package davud.hosseini.themeswitcherplugin.plugin
+package com.github.dhosseiny.themeshitcher.plugin
 
 import com.android.build.gradle.*
 import com.android.build.gradle.api.BaseVariant

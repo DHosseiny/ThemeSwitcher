@@ -1,4 +1,5 @@
 plugins {
+    id("com.gradle.plugin-publish") version "0.11.0"
     `kotlin-dsl`
     `java-gradle-plugin`
     `maven-publish`
@@ -9,7 +10,7 @@ repositories {
     google()
 }
 
-group = "com.github.dhosseiny.theme-switcher"
+group = "com.github.dhosseiny.themeswitcher"
 version = "0.1"
 
 dependencies {
@@ -22,12 +23,12 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        create("theme-switcher-plugin") {
-            id = "com.github.dhosseiny.theme-switcher.plugin"
+        create("themeswitcher-plugin") {
+            id = "com.github.dhosseiny.themeswitcher.plugin"
             displayName = "Theme Switcher Gradle Plugin"
             description =
                 "Theme Switcher Gradle Plugin - Generates kotlin files from xml color files to use in databinding and code expressions"
-            implementationClass = "davud.hosseini.themeswitcherplugin.plugin.ThemeSwitcherPlugin"
+            implementationClass = "com.github.dhosseiny.themeshitcher.plugin.ThemeSwitcherPlugin"
         }
     }
 }
@@ -51,12 +52,12 @@ gradlePlugin {
 //    dependsOn(functionalTest)
 //}
 
-//pluginBundle {
-//    website = "https://github.com/DHosseiny/ThemeSwitcher"
-//    vcsUrl = "https://github.com/DHosseiny/ThemeSwitcher"
-//
-//    tags = listOf("theme-switcher", "theme", "android theme", "xml", "databinding")
-//}
+pluginBundle {
+    website = "https://github.com/DHosseiny/ThemeSwitcher"
+    vcsUrl = "https://github.com/DHosseiny/ThemeSwitcher"
+
+    tags = listOf("themeswitcher", "theme", "android theme", "xml", "databinding")
+}
 
 //uploadArchives {
 //    repositories {

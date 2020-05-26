@@ -1,4 +1,4 @@
-package davud.hosseini.themeswitcherplugin.plugin.data.helpers.wrappers
+package com.github.dhosseiny.themeshitcher.plugin.data.helpers.wrappers
 
 class ApplicationVariantWrapper(private val applicationVariant: Any) {
 

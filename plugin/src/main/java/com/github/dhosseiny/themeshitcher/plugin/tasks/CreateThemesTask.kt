@@ -2,7 +2,11 @@
  * Created by DHosseiny. ThemeSwitcher project.
  */
 
-package davud.hosseini.themeswitcherplugin.plugin.tasks
+/*
+ * Created by DHosseiny. ThemeSwitcher project.
+ */
+
+package com.github.dhosseiny.themeshitcher.plugin.tasks
 
 import com.android.build.gradle.api.BaseVariant
 import com.squareup.kotlinpoet.*
